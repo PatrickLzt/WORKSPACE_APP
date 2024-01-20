@@ -12,7 +12,7 @@ import * as dotenv from 'dotenv'
 import * as schema from '../../../migrations/schema'
 import { migrate } from 'drizzle-orm/postgres-js/migrator'
 
-dotenv.config({ path: '.env' })
+dotenv.config({ path: '../../../env' })
 
 if (!process.env.DATABASE_URL) {
     throw new Error('Missing DATABASE_URL')
@@ -21,7 +21,7 @@ if (!process.env.DATABASE_URL) {
 /**
  * @brief Database connection
  */
-const client = postgres(process.env.DATABASE_URL, { max: 1 })
+const client = postgres(process.env.DATABASE_URL, { max: 1 });
 
 /**
  * @brief Create database instance
