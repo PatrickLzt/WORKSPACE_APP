@@ -7,11 +7,12 @@
  *
  */
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '../lib/providers/nextThemeProvider'
+import { DM_Sans } from 'next/font/google'
+import { twMerge } from 'tailwind-merge'
 
-const inter = Inter({ subsets: ['latin'] }) /* Goolge Font */
+const inter = DM_Sans({ subsets: ['latin'] }) /* Goolge Font */
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={twMerge('bg-background', inter.className)}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
           {children}
         </ThemeProvider>
