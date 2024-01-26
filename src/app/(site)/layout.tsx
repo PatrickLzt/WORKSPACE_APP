@@ -7,13 +7,18 @@
  *
  */
 
+import Header from "@/src/components/LandingPage/Header";
+
 /**
  * @brief Layout for the Home Page
  * 
  */
 export default function HomePageLayout({ children }: { children: React.ReactNode }) {
     return (
-        <main>{children}</main>
+        <main>
+            <Header />
+            {children}
+        </main>
     )
 }
 
