@@ -7,7 +7,7 @@
  *
  */
 import { TitleSection } from "@/src/components/LandingPage/TitleSection";
-import { CustomCard } from "@/src/components/LandingPage/customCard";
+import { CustomCard } from "@/src/components/LandingPage/CustomCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
 import { Button } from "@/src/components/ui/button";
 import { CardContent, CardDescription, CardTitle } from "@/src/components/ui/card";
@@ -170,9 +170,7 @@ export default function HomePage() {
                                     <p className="dark:text-washed-purple-800">
                                         {card.description}
                                     </p>
-                                    <Button
-                                        className="whitespace-nowrap w-full mt-4"
-                                    >
+                                    <Button className="whitespace-nowrap w-full mt-4">
                                         {card.planType === PRICING_PLANS.proplan
                                             ? 'Go Pro'
                                             : 'Get Started'}
