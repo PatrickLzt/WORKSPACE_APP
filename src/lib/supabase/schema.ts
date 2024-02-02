@@ -8,7 +8,7 @@
  */
 import { pgTable, uuid, timestamp, text, boolean, bigint, jsonb, foreignKey, integer } from "drizzle-orm/pg-core";
 import { pricingPlanInterval, pricingType, subscriptionStatus } from "../../../migrations/schema";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 
 /**
  * @brief Database workspace schema
@@ -71,6 +71,9 @@ export const files = pgTable('files', {
     }),
 });
 
+/**
+ * @brief Database user schema
+ */
 export const users = pgTable("users", {
     id: uuid("id").primaryKey().notNull(),
     fullName: text("full_name"),
@@ -90,11 +93,36 @@ export const users = pgTable("users", {
         }
     });
 
+/**
+ * @brief Database collaborators schema
+ */
+export const collaborators = pgTable('collaborators', {
+    id: uuid('id').defaultRandom().primaryKey().notNull(),
+    workspaceId: uuid('workspace_id')
+        .notNull()
+        .references(() => workspaces.id, { onDelete: 'cascade' }),
+    createdAt: timestamp('created_at', {
+        withTimezone: true,
+        mode: 'string',
+    })
+        .defaultNow()
+        .notNull(),
+    userId: uuid('user_id')
+        .notNull()
+        .references(() => users.id, { onDelete: 'cascade' }),
+});
+
+/**
+ * @brief Database customer schema 
+ */
 export const customers = pgTable("customers", {
     id: uuid("id").primaryKey().notNull().references(() => users.id),
     stripeCustomerId: text("stripe_customer_id"),
 });
 
+/**
+ * @brief Database prices schema
+ */
 export const prices = pgTable("prices", {
     id: text("id").primaryKey().notNull(),
     productId: text("product_id").references(() => products.id),
@@ -110,6 +138,9 @@ export const prices = pgTable("prices", {
     metadata: jsonb("metadata"),
 });
 
+/**
+ * @brief Database products schema
+ */
 export const products = pgTable("products", {
     id: text("id").primaryKey().notNull(),
     active: boolean("active"),
@@ -119,6 +150,9 @@ export const products = pgTable("products", {
     metadata: jsonb("metadata"),
 });
 
+/**
+ * @brief Database subscriptions schema
+ */
 export const subscriptions = pgTable("subscriptions", {
     id: text("id").primaryKey().notNull(),
     userId: uuid("user_id").notNull().references(() => users.id),
@@ -136,3 +170,23 @@ export const subscriptions = pgTable("subscriptions", {
     trialStart: timestamp("trial_start", { withTimezone: true, mode: 'string' }).default(sql`now()`),
     trialEnd: timestamp("trial_end", { withTimezone: true, mode: 'string' }).default(sql`now()`),
 });
+
+/**
+ * @brief Database Relations of products schema
+ * 
+ * @note DO NOT DELETE
+ */
+export const productsRelations = relations(products, ({ many }) => ({
+    prices: many(prices),
+}));
+
+/**
+ * @brief Database Relations of prices schema
+ * 
+ */
+export const pricesRelations = relations(prices, ({ one }) => ({
+    product: one(products, {
+        fields: [prices.productId],
+        references: [products.id],
+    }),
+}));

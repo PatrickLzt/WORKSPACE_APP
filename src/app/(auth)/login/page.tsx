@@ -21,7 +21,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
-import Loader from "@/src/components/Loader"
+import Loader from "@/src/components/global/Loader"
 import { actionLoginUser } from "@/src/lib/serverActions/authActions"
 
 /**
