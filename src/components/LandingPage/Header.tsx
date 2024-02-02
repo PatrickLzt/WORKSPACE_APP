@@ -75,7 +75,7 @@ const Header = () => {
         <header className="p-4 flex justify-center items-center ">
             <Link href={'/'} className="w-full justify-left items-center flex gap-2">
                 <Image src="./cypresslogo.svg" alt="Cypress Logo" width={25} height={25} />
-                <span className="font-semibold dark:text-white text-2xl first-letter:ml-2">cypress.</span>
+                <span className="font-semibold dark:text-white text-2xl first-letter:ml-2">worksp4ce.</span>
             </Link>
             <NavigationMenu className="hidden md:block ">
                 <NavigationMenuList className="gap-6">
