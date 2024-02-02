@@ -32,7 +32,7 @@ export default function HomePage() {
                 />
                 <div className="bg-white p-[2px] mt-6 rounded-xl bg-gradient-to-r from-primary to-brand-primaryBlue sm:w-[300px]">
                     <Button variant="secondary" className=" w-full  rounded-[10px]  p-10 text-2xl bg-background" >
-                        Get Cypress Free
+                        Get Worksp4ce Free
                     </Button>
                 </div>
                 <div className="sm:w-full w-[750px] flex justify-center items-center relative sm:ml-0 ml-[-50px] pt-10">
