@@ -7,9 +7,10 @@
  *
  */
 
+/* Use client side render  */
 "use client"
 
-import Loader from '@/src/components/Loader'
+import Loader from '@/src/components/global/Loader'
 import { Alert, AlertDescription, AlertTitle } from '@/src/components/ui/alert'
 import { Button } from '@/src/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from '@/src/components/ui/form'
