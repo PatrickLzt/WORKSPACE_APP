@@ -29,70 +29,74 @@ import { actionLoginUser } from "@/src/lib/serverActions/authActions"
  * 
  * @return {JSX.Element} for the Login Page
  */
-export default function LoginPage() {
+const LoginPage = () => {
 
-    const router = useRouter()
-
-    const [submitError, setSubmitError] = useState("")
+    const router = useRouter();
+    const [submitError, setSubmitError] = useState('');
 
     const form = useForm<z.infer<typeof FormSchema>>({
         mode: 'onChange',
         resolver: zodResolver(FormSchema),
-        defaultValues: {
-            email: "",
-            password: ""
-        }
-    })
+        defaultValues: { email: '', password: '' },
+    });
 
-    const isLoading = form.formState.isSubmitting
+    const isLoading = form.formState.isSubmitting;
 
-    const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (formData: any) => {
-
-        const { error } = await actionLoginUser(formData)
-
+    const onSubmit: SubmitHandler<z.infer<typeof FormSchema>> = async (formData) => {
+        const { error } = await actionLoginUser(formData);
         if (error) {
-            form.reset()
-            setSubmitError(error.message)
-        } else {
-            router.push("/dashboard")
+            form.reset();
+            setSubmitError(error.message);
         }
-    }
+        router.push('/dashboard');
+    };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} onChange={() => {
-                if (submitError) setSubmitError("")
-            }} className="w-full sm:w-[400px] space-y-6 flex flex-col">
-                <Link href="/" className="w-full flex justify-center intems-left">
-                    <Image src="./cypresslogo.svg" alt="Logo" width={50} height={50} />
-                    <span className="font-semibold dark:text-white text-4xl first-letter:ml-2">cypress.</span>
+            <form onChange={() => {
+                if (submitError) setSubmitError('');
+            }} onSubmit={form.handleSubmit(onSubmit)} className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
+                <Link href="/" className=" w-full flex justify-left items-center">
+                    <Image src="./cypresslogo.svg" alt="cypress Logo" width={50} height={50} />
+                    <span
+                        className="font-semibold dark:text-white text-4xl first-letter:ml-2">
+                        cypress.
+                    </span>
                 </Link>
-                <FormDescription className="text-foreground/60 ">Sign in to your account</FormDescription>
-                <FormField disabled={isLoading} control={form.control} name="email" render={(field) => (
-
+                <FormDescription className="text-foreground/60">
+                    An all-In-One Collaboration and Productivity Platform
+                </FormDescription>
+                <FormField disabled={isLoading} control={form.control} name="email" render={({ field }) => (
                     <FormItem>
                         <FormControl>
-                            <Input type="email" placeholder="Email Address" {...field} />
+                            <Input type="email" placeholder="Email" {...field} />
                         </FormControl>
+                        <FormMessage />
                     </FormItem>
-
-                )} />
-
-                <FormField disabled={isLoading} control={form.control} name="password" render={(field) => (
-
+                )}
+                />
+                <FormField disabled={isLoading} control={form.control} name="password" render={({ field }) => (
                     <FormItem>
                         <FormControl>
                             <Input type="password" placeholder="Password" {...field} />
                         </FormControl>
+                        <FormMessage />
                     </FormItem>
-
-                )} />
+                )}
+                />
                 {submitError && <FormMessage>{submitError}</FormMessage>}
-                <Button type="submit" disabled={isLoading} className="w-full">{!isLoading ? "Login" : <Loader />}</Button>
-                <span className="self-container">Don't have an account? {""}
-                    <Link href="/signup" className="text-primary font-semibold">Sign up</Link>
+                <Button type="submit" className="w-full p-6" size="lg" disabled={isLoading}>
+                    {!isLoading ? 'Login' : <Loader />}
+                </Button>
+                <span className="self-container">
+                    Don't have an account?{' '}
+                    <Link href="/signup" className="text-primary">
+                        Sign Up
+                    </Link>
                 </span>
             </form>
-        </Form >
-    )
-}
+        </Form>
+    );
+};
+
+export default LoginPage;
