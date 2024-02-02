@@ -181,7 +181,7 @@ export default function HomePage() {
                                 <ul className="font-normal flex mb-2 flex-col gap-4">
                                     <small>{card.highlightFeature}</small>
                                     {card.freatures.map((feature) => (
-                                        <li key={feature} className="flex items-center gap-2">
+                                        <li key={randomUUID()} className="flex items-center gap-2">
                                             <Image src='./icons/check.svg' alt="Check Icon" width={20} height={20} />
                                             {feature}
                                         </li>
