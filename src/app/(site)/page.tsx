@@ -6,6 +6,7 @@
  * @date 
  *
  */
+
 import { TitleSection } from "@/src/components/LandingPage/TitleSection";
 import { CustomCard } from "@/src/components/LandingPage/CustomCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
@@ -115,9 +116,9 @@ export default function HomePage() {
                                     </div>
                                     }
                                     cardContent={
-                                        <p className="dark:text-washed-purple-800">
+                                        <div className="dark:text-washed-purple-800">
                                             {testimonial.message}
-                                        </p>
+                                        </div>
                                     }
                                 ></CustomCard>
                             ))}
@@ -167,9 +168,9 @@ export default function HomePage() {
                                     ) : (
                                         ''
                                     )}
-                                    <p className="dark:text-washed-purple-800">
+                                    <div className="dark:text-washed-purple-800">
                                         {card.description}
-                                    </p>
+                                    </div>
                                     <Button className="whitespace-nowrap w-full mt-4">
                                         {card.planType === PRICING_PLANS.proplan
                                             ? 'Go Pro'
@@ -180,8 +181,8 @@ export default function HomePage() {
                             cardFooter={
                                 <ul className="font-normal flex mb-2 flex-col gap-4">
                                     <small>{card.highlightFeature}</small>
-                                    {card.freatures.map((feature) => (
-                                        <li key={randomUUID()} className="flex items-center gap-2">
+                                    {card.freatures.map((feature, index: number) => (
+                                        <li key={index} className="flex items-center gap-2">
                                             <Image src='./icons/check.svg' alt="Check Icon" width={20} height={20} />
                                             {feature}
                                         </li>

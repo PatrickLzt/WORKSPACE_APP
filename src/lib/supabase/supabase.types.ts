@@ -10,13 +10,7 @@ import {
 } from '../../../migrations/schema';
 import { files } from './schema';
 
-export type Json =
-    | string
-    | number
-    | boolean
-    | null
-    | { [key: string]: Json | undefined }
-    | Json[];
+export type Json = | string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export interface Database {
     public: {
@@ -402,14 +396,7 @@ export interface Database {
         Enums: {
             pricing_plan_interval: 'day' | 'week' | 'month' | 'year';
             pricing_type: 'one_time' | 'recurring';
-            subscription_status:
-            | 'trialing'
-            | 'active'
-            | 'canceled'
-            | 'incomplete'
-            | 'incomplete_expired'
-            | 'past_due'
-            | 'unpaid';
+            subscription_status: | 'trialing' | 'active' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'past_due' | 'unpaid';
         };
         CompositeTypes: {
             [_ in never]: never;
@@ -428,6 +415,6 @@ export type Subscription = InferSelectModel<typeof subscriptions> & {
     prices: Price;
 };
 
-export type ProductWirhPrice = Product & {
+export type ProductWithPrice = Product & {
     prices?: Price[];
 };

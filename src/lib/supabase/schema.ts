@@ -14,7 +14,7 @@ import { relations, sql } from "drizzle-orm";
  * @brief Database workspace schema
  */
 export const workspaces = pgTable('workspaces', {
-    id: uuid('uuid').defaultRandom().primaryKey().notNull(),
+    id: uuid('id').defaultRandom().primaryKey().notNull(),
     createdAt: timestamp('created_at', {
         withTimezone: true,
         mode: 'string',
@@ -32,7 +32,7 @@ export const workspaces = pgTable('workspaces', {
  * @brief Database folder schema
  */
 export const folders = pgTable('folders', {
-    id: uuid('uuid').defaultRandom().primaryKey().notNull(),
+    id: uuid('id').defaultRandom().primaryKey().notNull(),
     createdAt: timestamp('created_at', {
         withTimezone: true,
         mode: 'string',
@@ -52,7 +52,7 @@ export const folders = pgTable('folders', {
  * @brief Database file schema
  */
 export const files = pgTable('files', {
-    id: uuid('uuid').defaultRandom().primaryKey().notNull(),
+    id: uuid('id').defaultRandom().primaryKey().notNull(),
     createdAt: timestamp('created_at', {
         withTimezone: true,
         mode: 'string',

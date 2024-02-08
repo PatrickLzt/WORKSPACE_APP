@@ -7,6 +7,9 @@ const nextConfig = {
     experimental: {
         missingSuspenseWithCSRBailout: false,
     },
+    images: {
+        domains: ['chooadmotzlwcvkcyzzj.supabase.co'],
+    },
 }
 
 module.exports = nextConfig
