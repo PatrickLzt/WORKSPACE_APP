@@ -13,7 +13,7 @@ export const subscriptionStatus = pgEnum("subscription_status", ['unpaid', 'past
 
 
 export const workspaces = pgTable("workspaces", {
-	id: uuid("uuid").defaultRandom().primaryKey().notNull(),
+	id: uuid("id").defaultRandom().primaryKey().notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }),
 	workspaceOwner: uuid("workspace_owner").notNull(),
 	title: text("title").notNull(),
@@ -25,7 +25,7 @@ export const workspaces = pgTable("workspaces", {
 });
 
 export const files = pgTable("files", {
-	id: uuid("uuid").defaultRandom().primaryKey().notNull(),
+	id: uuid("id").defaultRandom().primaryKey().notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }),
 	workspaceId: uuid("workspace_id").references(() => workspaces.id, { onDelete: "cascade" }),
 	title: text("title").notNull(),
@@ -38,7 +38,7 @@ export const files = pgTable("files", {
 });
 
 export const folders = pgTable("folders", {
-	id: uuid("uuid").defaultRandom().primaryKey().notNull(),
+	id: uuid("id").defaultRandom().primaryKey().notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }),
 	workspaceId: uuid("workspace_id").references(() => workspaces.id, { onDelete: "cascade" }),
 	title: text("title").notNull(),

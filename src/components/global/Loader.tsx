@@ -7,7 +7,6 @@
  *
  */
 
-
 /**
  * @brief Loader Component 
  * 

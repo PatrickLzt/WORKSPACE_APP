@@ -31,10 +31,13 @@ interface AppState {
     workspaces: appWorkspacesType[] | [];
 }
 
-type Action = | { type: 'ADD_WORKSPACE'; payload: appWorkspacesType } | { type: 'DELETE_WORKSPACE'; payload: string } | {
-    type: 'UPDATE_WORKSPACE';
-    payload: { workspace: Partial<appWorkspacesType>; workspaceId: string };
-}
+type Action =
+    | { type: 'ADD_WORKSPACE'; payload: appWorkspacesType }
+    | { type: 'DELETE_WORKSPACE'; payload: string }
+    | {
+        type: 'UPDATE_WORKSPACE';
+        payload: { workspace: Partial<appWorkspacesType>; workspaceId: string };
+    }
     | {
         type: 'SET_WORKSPACES';
         payload: { workspaces: appWorkspacesType[] | [] };
@@ -143,8 +146,7 @@ const appReducer = (
                         ...workspace,
                         folders: [...workspace.folders, action.payload.folder].sort(
                             (a, b) =>
-                                (a.createdAt ? new Date(a.createdAt).getTime() : 0) -
-                                (b.createdAt ? new Date(b.createdAt).getTime() : 0)
+                                (a.createdAt && b.createdAt) ? new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() : 0
                         ),
                     };
                 }),
@@ -285,14 +287,19 @@ const appReducer = (
     }
 };
 
-const AppStateContext = createContext<| {
-    state: AppState; dispatch: Dispatch<Action>; workspaceId: string | undefined; folderId: string | undefined; fileId: string | undefined;
-} | undefined>(undefined);
+const AppStateContext = createContext<| { state: AppState; dispatch: Dispatch<Action>; workspaceId: string | undefined; folderId: string | undefined; fileId: string | undefined; } | undefined>(undefined);
 
 interface AppStateProviderProps {
     children: React.ReactNode;
 }
 
+/**
+ * @brief App state provider
+ * 
+ * @param children
+ *  
+ * @returns  
+ */
 const AppStateProvider: React.FC<AppStateProviderProps> = ({ children }) => {
     const [state, dispatch] = useReducer(appReducer, initialState);
     const pathname = usePathname();
@@ -343,8 +350,7 @@ const AppStateProvider: React.FC<AppStateProviderProps> = ({ children }) => {
 
     return (
         <AppStateContext.Provider
-            value={{ state, dispatch, workspaceId, folderId, fileId }}
-        >
+            value={{ state: state, dispatch: dispatch, workspaceId: workspaceId, folderId: folderId, fileId: fileId }}>
             {children}
         </AppStateContext.Provider>
     );

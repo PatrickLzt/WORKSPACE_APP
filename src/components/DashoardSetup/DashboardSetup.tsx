@@ -49,7 +49,7 @@ interface DashboardSetupProps {
 const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) => {
     const { toast } = useToast();
     const router = useRouter();
-    const { dispatch } = useAppState();
+    const appState = useAppState();
     const [selectedEmoji, setSelectedEmoji] = useState('💼');
     const supabase = createClientComponentClient();
     const { register, handleSubmit, reset, formState: { isSubmitting: isLoading, errors }, } = useForm<z.infer<typeof CreateWorkspaceFormSchema>>({
@@ -68,18 +68,13 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
 
         if (file) {
             try {
-                const { data, error } = await supabase.storage.from('workspace-logos').upload(`workspaceLogo.${workspaceUUID}`, file, {
-                    cacheControl: '3600', upsert: true,
-                });
+                const { data, error } = await supabase.storage.from('workspaceLogos').upload(`workspaceLogo.${workspaceUUID}`, file, { cacheControl: '3600', upsert: true });
 
                 if (error) throw new Error('');
                 filePath = data.path;
-
             } catch (error) {
                 console.log('Error', error);
-                toast({
-                    variant: 'destructive', title: 'Error! Could not upload your workspace logo',
-                });
+                toast({ variant: 'destructive', title: 'Error! Could not upload your workspace logo' });
             }
         }
         try {
@@ -98,7 +93,7 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
             if (createError) {
                 throw new Error();
             }
-            dispatch({
+            appState?.dispatch({
                 type: 'ADD_WORKSPACE',
                 payload: { ...newWorkspace, folders: [] },
             });
@@ -112,10 +107,7 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
         } catch (error) {
             console.log(error, 'Error');
             toast({
-                variant: 'destructive',
-                title: 'Could not create your workspace',
-                description:
-                    "Oops! Something went wrong, and we couldn't create your workspace. Try again or come back later.",
+                variant: 'destructive', title: 'Could not create your workspace', description: "Oops! Something went wrong, and we couldn't create your workspace. Try again or come back later.",
             });
         } finally {
             reset();

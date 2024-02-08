@@ -22,6 +22,20 @@
       "when": 1705763389096,
       "tag": "0002_quiet_darwin",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1707389127944,
+      "tag": "0003_talented_raider",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1707400918184,
+      "tag": "0004_fast_sprite",
+      "breakpoints": true
     }
   ]
 }

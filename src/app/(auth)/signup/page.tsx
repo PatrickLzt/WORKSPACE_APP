@@ -49,7 +49,6 @@ const SignUpFormSchema = z
 
 /**
  * @brief Signup Page
- * 
  */
 const Signup = () => {
     const router = useRouter();
