@@ -17,15 +17,18 @@ interface LayoutProps {
 
 /**
  * @brief Root Layout for the dashboard
+ * 
  * @param children
- * @param params
  * 
  * @returns Layout template
  * 
  */
-const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
+const Layout: React.FC<LayoutProps> = async ({ children }) => {
+
     const { data: products, error } = await getActiveProductsWithPrice();
+
     if (error) throw new Error();
+
     return (
         <main className="flex over-hidden h-screen">
             <SubscriptionModalProvider products={products}>

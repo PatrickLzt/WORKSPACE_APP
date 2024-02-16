@@ -6,7 +6,6 @@ const nextConfig = {
     },
     experimental: {
         missingSuspenseWithCSRBailout: false,
-        serverActions: true,
     },
     images: {
         domains: ['chooadmotzlwcvkcyzzj.supabase.co'],
