@@ -14,7 +14,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export const WorkspacePage = async () => {
+const WorkspacePage = async () => {
     const supabase = createServerComponentClient({ cookies });
 
     const {
@@ -41,3 +41,5 @@ export const WorkspacePage = async () => {
 
     redirect(`/dashboard/${workspace.id}`);
 };
+
+export default WorkspacePage;

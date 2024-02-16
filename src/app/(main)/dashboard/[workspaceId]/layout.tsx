@@ -7,6 +7,7 @@
  *
  */
 
+import { SubscriptionModalProvider } from "@/src/lib/providers/subscriptionModalProvider";
 import { getActiveProductsWithPrice } from "@/src/lib/supabase/queries";
 
 interface LayoutProps {
