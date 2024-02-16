@@ -95,9 +95,9 @@ const Signup = () => {
                     if (submitError) setSubmitError('');
                 }} onSubmit={form.handleSubmit(onSubmit)} className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
                 <Link href="/" className=" w-full flex justify-left items-center">
-                    <Image src="./cypresslogo.svg" alt="cypress Logo" width={50} height={50} />
+                    <Image src="./worksp4ceLogo.svg" alt="worksp4ce Logo" width={50} height={50} />
                     <span className="font-semibold dark:text-white text-4xl first-letter:ml-2">
-                        cypress.
+                        worksp4ce.
                     </span>
                 </Link>
                 <FormDescription className="text-foreground/60">
