@@ -1,6 +1,6 @@
 /**
  * @file src/app/(site)/layout.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Layout for the Home Page
  * @version 1.0
  * @date 

@@ -1,6 +1,6 @@
 /**
  * @file src/app/lib/supabase/schema.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Database schema
  * @version 1.0
  * @date 

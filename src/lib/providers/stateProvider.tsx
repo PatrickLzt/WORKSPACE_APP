@@ -1,6 +1,6 @@
 /**
  * @file src/lib/providers/stateProvider.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Supabase queries
  * @version 1.0
  * @date 
@@ -23,9 +23,7 @@ import { usePathname } from 'next/navigation';
 import { getFiles } from '../supabase/queries';
 
 export type appFoldersType = Folder & { files: File[] | [] };
-export type appWorkspacesType = workspace & {
-    folders: appFoldersType[] | [];
-};
+export type appWorkspacesType = workspace & { folders: appFoldersType[] | []; };
 
 interface AppState {
     workspaces: appWorkspacesType[] | [];
@@ -287,7 +285,21 @@ const appReducer = (
     }
 };
 
-const AppStateContext = createContext<| { state: AppState; dispatch: Dispatch<Action>; workspaceId: string | undefined; folderId: string | undefined; fileId: string | undefined; } | undefined>(undefined);
+interface AppStateContextProps {
+    state: AppState;
+    dispatch: Dispatch<Action>;
+    workspaceId: string | undefined;
+    folderId: string | undefined;
+    fileId: string | undefined;
+}
+
+const AppStateContext = createContext<AppStateContextProps | undefined>({
+    state: initialState,
+    dispatch: () => { },
+    workspaceId: undefined,
+    folderId: undefined,
+    fileId: undefined,
+});
 
 interface AppStateProviderProps {
     children: React.ReactNode;
@@ -358,10 +370,4 @@ const AppStateProvider: React.FC<AppStateProviderProps> = ({ children }) => {
 
 export default AppStateProvider;
 
-export const useAppState = () => {
-    const context = useContext(AppStateContext);
-    if (!context) {
-        throw new Error('useAppState must be used within an AppStateProvider');
-    }
-    return context;
-};
+export const useAppState = () => { useContext(AppStateContext) };

@@ -1,6 +1,6 @@
 /**
  * @file src/app/(auth)/signup/page.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Signup Page
  * @version 1.0
  * @date 

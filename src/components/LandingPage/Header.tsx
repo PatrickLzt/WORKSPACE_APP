@@ -1,6 +1,6 @@
 /**
  * @file src/components/LandingPage/Header.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Header Component
  * @version 1.0
  * @date 

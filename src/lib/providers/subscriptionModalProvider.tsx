@@ -1,6 +1,6 @@
 /**
  * @file src/lib/providers/subscriptionModalProvider.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Subscription Modal Provider
  * @version 1.0
  * @date 

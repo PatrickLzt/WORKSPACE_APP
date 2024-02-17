@@ -1,14 +1,13 @@
 /**
  * @file src/app/(main)/dashboard/[workspaceId]/layout.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Root Layout for the workspace pages
  * @version 1.0
  * @date 
  *
  */
 
-import { SubscriptionModalProvider } from "@/src/lib/providers/subscriptionModalProvider";
-import { getActiveProductsWithPrice } from "@/src/lib/supabase/queries";
+import Sidebar from "@/src/components/Sidebar/Sidebar";
 
 interface LayoutProps {
     children: React.ReactNode
@@ -23,17 +22,17 @@ interface LayoutProps {
  * @returns Layout template
  * 
  */
-const Layout: React.FC<LayoutProps> = async ({ children }) => {
-
-    const { data: products, error } = await getActiveProductsWithPrice();
-
-    if (error) throw new Error();
+const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
 
     return (
-        <main className="flex over-hidden h-screen">
-            <SubscriptionModalProvider products={products}>
+        <main className="flex overflow-hidden h-screen w-screen">
+            <Sidebar params={params} />
+            <MobileSidebar>
+                <Sidebar params={params} className="w-screen inline-block sm:hidden" />
+            </MobileSidebar>
+            <div className="dark:boder-Neutrals-12/70 border-l-[1px] w-full relative overflow-scroll">
                 {children}
-            </SubscriptionModalProvider>
+            </div>
         </main>
     );
 };

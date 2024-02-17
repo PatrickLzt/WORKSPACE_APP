@@ -1,6 +1,6 @@
 /**
  * @file src/lib/types.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Types
  * @version 1.0
  * @date 

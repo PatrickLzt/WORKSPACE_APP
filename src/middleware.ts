@@ -1,6 +1,6 @@
 /**
  * @file middleware.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Middleware 
  * @version 1.0
  * @date 

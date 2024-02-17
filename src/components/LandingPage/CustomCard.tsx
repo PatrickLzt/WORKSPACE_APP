@@ -1,6 +1,6 @@
 /**
  * @file src/components/LandingPage/customCard.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief  Custom Card Component
  * @version 1.0
  * @date 

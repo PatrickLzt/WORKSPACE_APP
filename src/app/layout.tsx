@@ -1,6 +1,6 @@
 /**
  * @file src/app/layout.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Root Layout
  * @version 1.0
  * @date 

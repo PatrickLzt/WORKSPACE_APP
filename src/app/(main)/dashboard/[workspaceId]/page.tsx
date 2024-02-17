@@ -1,6 +1,6 @@
 /**
  * @file src/app/(main)/dashboard/[workspaceId]/page.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Workspace page
  * @version 1.0
  * @date 

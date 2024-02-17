@@ -1,6 +1,6 @@
 /**
  * @file src/components/DashoardSetup/DashboardSetup.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief DashboardSetup component
  * @version 1.0
  * @date 
@@ -49,7 +49,7 @@ interface DashboardSetupProps {
 const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) => {
     const { toast } = useToast();
     const router = useRouter();
-    const appState = useAppState();
+    const appState = useAppState() as any;
     const [selectedEmoji, setSelectedEmoji] = useState('💼');
     const supabase = createClientComponentClient();
     const { register, handleSubmit, reset, formState: { isSubmitting: isLoading, errors }, } = useForm<z.infer<typeof CreateWorkspaceFormSchema>>({

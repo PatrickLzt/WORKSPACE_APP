@@ -1,6 +1,6 @@
 /**
  * @file src/lib/providers/nextThemeProvider.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Next Theme Provider
  * @version 1.0
  * @date 

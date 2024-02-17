@@ -1,6 +1,6 @@
 /**
  * @file src/lib/supabase/queries.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Supabase queries
  * @version 1.0
  * @date 
@@ -348,7 +348,6 @@ export const getActiveProductsWithPrice = async () => {
     try {
         const res = await db.query.products.findMany({
             where: (pro, { eq }) => eq(pro.active, true),
-
             with: {
                 prices: {
                     where: (pri: any, { eq }: any) => eq(pri.active, true),

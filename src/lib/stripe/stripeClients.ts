@@ -1,6 +1,6 @@
 /**
  * @file src/lib/stripe/stripeClients.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Stripe Clients
  * @version 1.0
  * @date 

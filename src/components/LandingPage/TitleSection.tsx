@@ -1,6 +1,6 @@
 /**
  * @file src/components/LandingPage/TitleSection.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Title Section Component
  * @version 1.0
  * @date 

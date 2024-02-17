@@ -1,6 +1,6 @@
 /**
  * @file src/app/(main)/dashboard/layout.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Root Layout for the dashboard
  * @version 1.0
  * @date 

@@ -1,6 +1,6 @@
 /**
  * @file src/components/global/EmojiPicker.tsx
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Supabase queries
  * @version 1.0
  * @date 

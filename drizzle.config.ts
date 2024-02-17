@@ -1,6 +1,6 @@
 /**
  * @file drizzle.config.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Drizzle config
  * @version 1.0
  * @date 

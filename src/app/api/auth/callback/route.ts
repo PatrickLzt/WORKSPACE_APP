@@ -1,6 +1,6 @@
 /**
  * @file src/app/api/auth/callback/route.ts
- * @author Patrick Lorenzeti <patrick.lorenzeti@mobitec.com.br>
+ * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
  * @brief Auth callback route
  * @version 1.0
  * @date 
