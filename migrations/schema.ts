@@ -1,6 +1,6 @@
 import { pgTable, foreignKey, pgEnum, text, boolean, bigint, integer, jsonb, uuid, timestamp } from "drizzle-orm/pg-core"
-  import { sql } from "drizzle-orm"
 
+import { sql } from "drizzle-orm"
 export const keyStatus = pgEnum("key_status", ['expired', 'invalid', 'valid', 'default'])
 export const keyType = pgEnum("key_type", ['stream_xchacha20', 'secretstream', 'secretbox', 'kdf', 'generichash', 'shorthash', 'auth', 'hmacsha256', 'hmacsha512', 'aead-det', 'aead-ietf'])
 export const aalLevel = pgEnum("aal_level", ['aal3', 'aal2', 'aal1'])
@@ -50,10 +50,9 @@ export const users = pgTable("users", {
 },
 (table) => {
 	return {
-		usersIdFkey: foreignKey({
+		usersIdUsersIdFk: foreignKey({
 			columns: [table.id],
-			foreignColumns: [table.id],
-			name: "users_id_fkey"
+			foreignColumns: [table.id]
 		}),
 	}
 });
