@@ -18,7 +18,7 @@ import {
     useState,
 } from 'react';
 import { ProductWithPrice } from '../supabase/supabase.types';
-import SubscriptionModal from '@/src/components/global/subscritpionModal';
+import SubscriptionModal from '@/src/components/global/SubscritpionModal';
 
 type SubscriptionModalContextType = {
     open: boolean;
