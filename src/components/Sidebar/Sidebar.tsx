@@ -14,6 +14,12 @@ import { cookies } from 'next/headers';
 
 import { redirect } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+import WorkspaceDropdown from './WorkspaceDropdown';
+import { ScrollArea } from '../ui/scroll-area';
+import PlanUsage from './PlainUsage';
+import NativeNavigation from './NativeNavigation';
+import FoldersDropdownList from './FoldersDropdownList';
+import UserCard from './UseCard';
 
 interface SidebarProps {
     params: { workspaceId: string };
