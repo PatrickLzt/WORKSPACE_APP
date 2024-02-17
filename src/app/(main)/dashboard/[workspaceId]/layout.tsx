@@ -7,6 +7,7 @@
  *
  */
 
+import MobileSidebar from "@/src/components/Sidebar/MobileSidebar";
 import Sidebar from "@/src/components/Sidebar/Sidebar";
 
 interface LayoutProps {

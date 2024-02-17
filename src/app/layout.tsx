@@ -6,6 +6,7 @@
  * @date 
  *
  */
+
 import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '../lib/providers/nextThemeProvider'
