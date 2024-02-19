@@ -12,6 +12,7 @@ import './globals.css'
 import { ThemeProvider } from '../lib/providers/nextThemeProvider'
 import { DM_Sans } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
+import AppStateProvider from '../lib/providers/stateProvider'
 
 const inter = DM_Sans({ subsets: ['latin'] }) /* Goolge Font */
 
@@ -32,9 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={twMerge('bg-background', inter.className)}>
-        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
-          {children}
-        </ThemeProvider>
+        <AppStateProvider>
+          <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
+            {children}
+          </ThemeProvider>
+        </AppStateProvider>
       </body>
     </html>
   )
