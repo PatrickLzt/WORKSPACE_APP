@@ -40,16 +40,17 @@ const SelectedWorkspace: React.FC<SelectedWorkspaceProps> = ({ workspace, onClic
     }, [workspace]);
 
     return (
-        <Link href={`/dashboard/${workspace.id}`} onClick={() => { if (onClick) onClick(workspace); }} className="flex rounded-md hover:bg-muted 
-            transition-all flex-row p-2 gap-4 justify-center cursor-pointer items-center my-2">
+        <>
+            <Link href={`/dashboard/${workspace.id}`} onClick={() => { if (onClick) onClick(workspace); }} className="flex rounded-md hover:bg-muted transition-all flex-row p-2 gap-4 justify-center cursor-pointer items-center my-2 pl-10">
 
-            <Image src={workspaceLogo} alt="workspace logo" width={26} height={26} />
-            <div className="flex flex-col">
-                <p className="text-lg w-[170px] overflow-hidden overflow-ellipsis whitespace-nowrap">
-                    {workspace.title}
-                </p>
-            </div>
-        </Link>
+                <Image src={workspaceLogo} alt="workspace logo" width={26} height={26} />
+                <div className="flex flex-col">
+                    <p className="text-lg w-[170px] overflow-hidden overflow-ellipsis whitespace-nowrap">
+                        {workspace.title}
+                    </p>
+                </div>
+            </Link>
+        </>
     );
 };
 

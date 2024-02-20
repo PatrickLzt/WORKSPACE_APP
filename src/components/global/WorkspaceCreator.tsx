@@ -12,7 +12,7 @@
 
 import { useSupabaseUser } from "@/src/lib/providers/supabaseUserProvider";
 import { useToast } from "../ui/use-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { User, workspace } from "@/src/lib/supabase/supabase.types";
 import { v4 } from "uuid";
@@ -67,13 +67,13 @@ const WorkspaceCreator = () => {
             if (permissions === 'private') {
                 toast({ title: 'Success', description: 'Created the workspace' });
                 await createWorkspace(newWorkspace);
-                router.reload();
+                router.refresh();
             }
             if (permissions === 'shared') {
                 toast({ title: 'Success', description: 'Created the workspace' });
                 await createWorkspace(newWorkspace);
                 await addCollaborators(collaborators, uuid);
-                router.reload();
+                router.refresh();
             }
         }
         setIsLoading(false);
