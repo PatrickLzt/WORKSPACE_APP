@@ -129,7 +129,7 @@ const SettingsForm = () => {
 
         setUploadingLogo(true);
 
-        const { data, error } = await supabase.storage.from('workspace-logos').upload(`workspaceLogo.${uuid}`, file, { cacheControl: '3600', upsert: true, });
+        const { data, error } = await supabase.storage.from('workspaceLogos').upload(`workspaceLogo.${uuid}`, file, { cacheControl: '3600', upsert: true, });
 
         if (!error) {
             dispatch({
@@ -280,7 +280,7 @@ const SettingsForm = () => {
                         Warning! deleting you workspace will permanantly delete all data
                         related to this workspace.
                     </AlertDescription>
-                    <Button type="submit" size={'sm'} variant={'destructive'} className="mt-4 text-smbg-destructive/40 border-2 border-destructive"
+                    <Button type="submit" size={'sm'} variant={'destructive'} className="mt-4 border-2 border-destructive"
                         onClick={async () => {
 
                             if (!workspaceId) return;

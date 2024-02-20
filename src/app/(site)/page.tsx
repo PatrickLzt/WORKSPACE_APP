@@ -149,7 +149,7 @@ export default function HomePage() {
                                     {card.planType === PRICING_PLANS.proplan && (
                                         <>
                                             <div className="hidden dark:block w-full blur-[120px] rounded-full h-32 absolute bg-brand-primaryPurple/80 -z-10 top-0" />
-                                            <Image src='./icons/diamond.svg' alt="Pro Plan Icon" className="absolute top-6 right-6" width={50} height={50}
+                                            <Image src='/icons/diamond.svg' alt="Pro Plan Icon" className="absolute top-6 right-6" width={50} height={50}
                                             />
                                         </>
                                     )}
@@ -183,7 +183,7 @@ export default function HomePage() {
                                     <small>{card.highlightFeature}</small>
                                     {card.freatures.map((feature, index: number) => (
                                         <li key={index} className="flex items-center gap-2">
-                                            <Image src='./icons/check.svg' alt="Check Icon" width={20} height={20} />
+                                            <Image src='/icons/check.svg' alt="Check Icon" width={20} height={20} />
                                             {feature}
                                         </li>
                                     ))}

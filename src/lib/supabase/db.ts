@@ -21,7 +21,7 @@ if (!process.env.DATABASE_URL) {
 /**
  * @brief Database connection
  */
-const client = postgres(process.env.DATABASE_URL, { max: 1 });
+const client = postgres(process.env.DATABASE_URL, { prepare: false, max: 1 });
 
 /**
  * @brief Create database instance

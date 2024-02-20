@@ -11,9 +11,9 @@ import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import Worksp4ceHome from '../CustomIcons/HomeIcon';
 import Settings from '../Settings/Settings';
-import { Trash } from 'lucide-react';
 import Worksp4ceSettingsIcon from '../CustomIcons/SettingsIcon';
 import Worksp4ceTrashIcon from '../CustomIcons/TrashIcon';
+import Trash from '../Trash/Trash';
 
 interface NativeNavigationProps {
     myWorkspaceId: string;
