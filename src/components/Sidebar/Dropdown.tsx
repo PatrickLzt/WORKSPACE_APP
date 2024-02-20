@@ -10,7 +10,6 @@
 /* Use Client side rendering */
 'use client';
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import {
@@ -45,16 +44,15 @@ interface DropdownProps {
  * 
  * @returns JSX.Element
  */
-const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, children, disabled, ...props }) => {
+const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
 
-    const supabase = createClientComponentClient();
     const { toast } = useToast();
     const { user } = useSupabaseUser();
     const { state, dispatch, workspaceId, folderId } = useAppState() as any;
     const [isEditing, setIsEditing] = useState(false);
     const router = useRouter();
 
-    //folder Title synced with server data and local
+    /* Folder title */
     const folderTitle: string | undefined = useMemo(() => {
         if (listType === 'folder') {
             const stateTitle = state.workspaces.find((workspace: any) => workspace.id === workspaceId)?.folders.find((folder: any) => folder.id === id)?.title;
@@ -65,8 +63,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
         }
     }, [state, listType, workspaceId, id, title]);
 
-    //fileItitle
-
+    /* File title */
     const fileTitle: string | undefined = useMemo(() => {
         if (listType === 'file') {
 
@@ -80,7 +77,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
         }
     }, [state, listType, workspaceId, id, title]);
 
-    //Navigate the user to a different page
+    /* Navigate page */
     const navigatatePage = (accordionId: string, type: string) => {
         if (type === 'folder') {
             router.push(`/dashboard/${workspaceId}/${accordionId}`);
@@ -90,12 +87,12 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
         }
     };
 
-    //double click handler
+    /* Handle double click */
     const handleDoubleClick = () => {
         setIsEditing(true);
     };
 
-    //blur
+    /* Handle blur */
     const handleBlur = async () => {
 
         if (!isEditing) return;
@@ -125,7 +122,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
         }
     };
 
-    //onchanges
+    /* Change emoji */
     const onChangeEmoji = async (selectedEmoji: string) => {
 
         if (!workspaceId) return;
@@ -147,6 +144,8 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
             }
         }
     };
+
+    /* Folder title change */
     const folderTitleChange = (e: any) => {
         if (!workspaceId) return;
         const fid = id.split('folder');
@@ -161,23 +160,25 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
             });
         }
     };
+
+    /* File title change */
     const fileTitleChange = (e: any) => {
         if (!workspaceId || !folderId) return;
-        const fid = id.split('folder');
-        if (fid.length === 2 && fid[1]) {
+        const fId = id.split('folder');
+        if (fId.length === 2 && fId[1]) {
             dispatch({
                 type: 'UPDATE_FILE',
                 payload: {
                     file: { title: e.target.value },
                     folderId,
                     workspaceId,
-                    fileId: fid[1],
+                    fileId: fId[1],
                 },
             });
         }
     };
 
-    //move to trash
+    /* Move to trash */
     const moveToTrash = async () => {
         if (!user?.email || !workspaceId) return;
         const pathId = id.split('folder');
@@ -223,26 +224,25 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId, childr
         }
     };
 
+    /* Group identifies */
     const isFolder = listType === 'folder';
     const groupIdentifies = clsx('dark:text-white whitespace-nowrap flex justify-between items-center w-full relative', {
         'group/folder': isFolder, 'group/file': !isFolder,
     });
 
+    /* List styles */
     const listStyles = useMemo(() => clsx('relative', {
         'border-none text-md': isFolder,
         'border-none ml-6 text-[16px] py-1': !isFolder,
-    }),
-        [isFolder]
-    );
+    }), [isFolder]);
 
+    /* Hover styles */
     const hoverStyles = useMemo(() => clsx('h-full hidden rounded-sm absolute right-0 items-center justify-center', {
         'group-hover/file:block': listType === 'file',
         'group-hover/folder:block': listType === 'folder',
-    }
-    ),
-        [isFolder]
-    );
+    }), [isFolder]);
 
+    /* Add new file */
     const addNewFile = async () => {
         if (!workspaceId) return;
         const newFile: File = {

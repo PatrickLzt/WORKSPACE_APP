@@ -31,16 +31,13 @@ interface WorkspaceDropdownProps {
  * 
  * @returns JSX.Element
  */
-const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({
-    privateWorkspaces,
-    collaboratingWorkspaces,
-    sharedWorkspaces,
-    defaultValue,
-}) => {
+const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({ privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces, defaultValue, }) => {
+
     const { dispatch, state } = useAppState() as any;
     const [selectedOption, setSelectedOption] = useState(defaultValue);
     const [isOpen, setIsOpen] = useState(false);
 
+    /* Effect set initial state server app state */
     useEffect(() => {
         if (!state.workspaces.length) {
             dispatch({
@@ -52,8 +49,10 @@ const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({
         }
     }, [privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces]);
 
+    /* Handle select */
     const handleSelect = (option: workspace) => { setSelectedOption(option); setIsOpen(false); };
 
+    /* Effect set selected workspace */
     useEffect(() => {
         const findSelectedWorkspace = state.workspaces.find((workspace: any) => workspace.id === defaultValue?.id);
 
@@ -67,11 +66,7 @@ const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({
         <div className=" relative inline-block text-left">
             <div>
                 <span onClick={() => setIsOpen(!isOpen)}>
-                    {selectedOption ? (
-                        <SelectedWorkspace workspace={selectedOption} />
-                    ) : (
-                        'Select a workspace'
-                    )}
+                    {selectedOption ? (<SelectedWorkspace workspace={selectedOption} />) : ('Select a workspace')}
                 </span>
             </div>
             {isOpen && (
@@ -106,8 +101,7 @@ const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({
                                 </>
                             )}
                         </div>
-                        <CustomDialogTrigger header="Create A Workspace" content={<WorkspaceCreator />}
-                            description="Workspaces give you the power to collaborate with others. You can change your workspace privacy settings after creating the workspace too.">
+                        <CustomDialogTrigger header="Create A Workspace" content={<WorkspaceCreator />} description="Give some description">
                             <div className="flex  transition-all  hover:bg-muted  justify-center  items-center  gap-2  p-2  w-full">
                                 <article className="text-slate-500 rounded-full bg-slate-800  w-4  h-4  flex  items-center  justify-center">
                                     +

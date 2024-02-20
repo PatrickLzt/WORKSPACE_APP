@@ -26,7 +26,7 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ children }) => {
     const { dispatch } = useAppState() as any;
     const router = useRouter();
     const supabase = createClientComponentClient();
-    const logout = async () => { await supabase.auth.signOut(); router.refresh(); dispatch({ type: 'SET_WORKSPACES', payload: { workspaces: [] } }); };
+    const logout = async () => { await supabase.auth.signOut(); router.push('/login'); dispatch({ type: 'SET_WORKSPACES', payload: { workspaces: [] } }); };
 
     return (
         <Button variant="ghost" size="icon" className="p-0" onClick={logout}>
