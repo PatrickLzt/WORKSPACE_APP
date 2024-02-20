@@ -43,6 +43,13 @@
       "when": 1708117778352,
       "tag": "0005_heavy_jackal",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1708450123284,
+      "tag": "0006_wooden_frank_castle",
+      "breakpoints": true
     }
   ]
 }

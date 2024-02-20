@@ -8,7 +8,10 @@ const nextConfig = {
         missingSuspenseWithCSRBailout: false,
     },
     images: {
-        domains: ['chooadmotzlwcvkcyzzj.supabase.co'],
+        dangerouslyAllowSVG: true,
+        remotePatterns: [{
+            hostname: 'chooadmotzlwcvkcyzzj.supabase.co'
+        }],
     },
 }
 
