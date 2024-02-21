@@ -84,10 +84,15 @@ type Action =
 
 const initialState: AppState = { workspaces: [] };
 
-const appReducer = (
-    state: AppState = initialState,
-    action: Action
-): AppState => {
+/**
+ * @brief App reducer
+ * 
+ * @param state 
+ * @param action 
+ * 
+ * @returns Reduced states
+ */
+const appReducer = (state: AppState = initialState, action: Action): AppState => {
     switch (action.type) {
         case 'ADD_WORKSPACE':
             return {

@@ -54,17 +54,14 @@ interface SupabaseUserProviderProps {
  * 
  * @returns JSX.Element
  */
-export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
-    children,
-}) => {
+export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({ children }) => {
+
     const [user, setUser] = useState<AuthUser | null>(null);
     const [subscription, setSubscription] = useState<Subscription | null>(null);
     const { toast } = useToast();
 
     const supabase = createClientComponentClient();
 
-    //Fetch the user details
-    //subscrip
     useEffect(() => {
         const getUser = async () => {
             const {

@@ -19,7 +19,7 @@ import { ScrollArea } from '../ui/scroll-area';
 import PlanUsage from './PlainUsage';
 import NativeNavigation from './NativeNavigation';
 import FoldersDropdownList from './FoldersDropdownList';
-import UserCard from './UseCard';
+import UserCard from './UserCard';
 
 interface SidebarProps {
     params: { workspaceId: string };
@@ -36,9 +36,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
     const supabase = createServerComponentClient({ cookies });
     //user
-    const {
-        data: { user },
-    } = await supabase.auth.getUser();
+    const { data: { user }, } = await supabase.auth.getUser();
 
     if (!user) return;
 
@@ -53,8 +51,7 @@ const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
     //error
     if (subscriptionError || foldersError) redirect('/dashboard');
 
-    const [privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces] =
-        await Promise.all([getPrivateWorkspaces(user.id), getCollaboratingWorkspaces(user.id), getSharedWorkspaces(user.id),]);
+    const [privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces] = await Promise.all([getPrivateWorkspaces(user.id), getCollaboratingWorkspaces(user.id), getSharedWorkspaces(user.id),]);
 
     //get all the different workspaces private collaborating shared
     return (

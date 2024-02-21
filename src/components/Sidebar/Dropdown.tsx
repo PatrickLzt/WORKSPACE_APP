@@ -48,7 +48,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
 
     const { toast } = useToast();
     const { user } = useSupabaseUser();
-    const { state, dispatch, workspaceId, folderId } = useAppState() as any;
+    const { state, dispatch, workspaceId, folderId } = useAppState();
     const [isEditing, setIsEditing] = useState(false);
     const router = useRouter();
 
@@ -269,7 +269,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
     };
 
     return (
-        <AccordionItem value={id} className={listStyles} onClick={(e) => { e.stopPropagation(); navigatatePage(id, listType); }}>
+        <AccordionItem value={id} className={listStyles} onClick={(e: any) => { e.stopPropagation(); navigatatePage(id, listType); }}>
             <AccordionTrigger id={listType} className="hover:no-underline p-2 dark:text-muted-foreground text-sm" disabled={listType === 'file'}>
                 <div className={groupIdentifies}>
                     <div className="flex gap-4 items-center justify-center overflow-hidden">

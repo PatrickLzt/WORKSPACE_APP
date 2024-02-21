@@ -272,7 +272,7 @@ export const getFiles = async (folderId: string) => {
     const isValid = validate(folderId);
     if (!isValid) return { data: null, error: 'Error' };
     try {
-        const results = (await db
+        const results: any = (await db
             .select()
             .from(files)
             .orderBy(files.createdAt)
