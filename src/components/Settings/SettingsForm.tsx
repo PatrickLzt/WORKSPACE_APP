@@ -54,7 +54,7 @@ const SettingsForm = () => {
 
     const { toast } = useToast();
     const { user, subscription } = useSupabaseUser();
-    const { open, setOpen } = useSubscriptionModal();
+    const { setOpen } = useSubscriptionModal();
     const router = useRouter();
     const supabase = createClientComponentClient();
     const { state, workspaceId, dispatch } = useAppState() as any;
@@ -63,7 +63,7 @@ const SettingsForm = () => {
     const [openAlertMessage, setOpenAlertMessage] = useState(false);
     const [workspaceDetails, setWorkspaceDetails] = useState<workspace>();
     const titleTimerRef = useRef<ReturnType<typeof setTimeout>>();
-    const [uploadingProfilePic, setUploadingProfilePic] = useState(false);
+    const [uploadingProfilePic] = useState(false);
     const [uploadingLogo, setUploadingLogo] = useState(false);
     const [loadingPortal, setLoadingPortal] = useState(false);
 
@@ -72,7 +72,7 @@ const SettingsForm = () => {
     const redirectToCustomerPortal = async () => {
         setLoadingPortal(true);
         try {
-            const { url, error } = await postData({ url: '/api/create-portal-link', });
+            const { url } = await postData({ url: '/api/create-portal-link', });
 
             window.location.assign(url);
         } catch (error) {

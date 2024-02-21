@@ -35,8 +35,8 @@ interface BannerUploadFormProps {
  */
 const BannerUploadForm: React.FC<BannerUploadFormProps> = ({ dirType, id }) => {
     const supabase = createClientComponentClient();
-    const { state, workspaceId, folderId, dispatch } = useAppState();
-    const { register, handleSubmit, reset, formState: { isSubmitting: isUploading, errors }, } = useForm<z.infer<typeof UploadBannerFormSchema>>({
+    const { workspaceId, folderId, dispatch } = useAppState();
+    const { register, handleSubmit, formState: { isSubmitting: isUploading, errors }, } = useForm<z.infer<typeof UploadBannerFormSchema>>({
         mode: 'onChange',
         defaultValues: {
             banner: '',
@@ -97,7 +97,7 @@ const BannerUploadForm: React.FC<BannerUploadFormProps> = ({ dirType, id }) => {
                 });
                 await updateWorkspace({ bannerUrl: filePath }, id);
             }
-        } catch (error) { }
+        } catch (error) { '' }
     };
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col gap-2">

@@ -39,7 +39,7 @@ interface CollaboratorSearchProps {
 const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({ children, existingCollaborators, getCollaborator, }) => {
 
     const { user } = useSupabaseUser();
-    const [searchResults, setSearchResults] = useState<User[] | []>([]);
+    const [searchResults] = useState<User[] | []>([]);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({ children, exist
         };
     }, []);
 
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeHandler = () => {
         if (timerRef) clearTimeout(timerRef.current);
     };
 

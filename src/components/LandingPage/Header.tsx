@@ -17,13 +17,6 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { cn } from "@/src/lib/utils";
 import { Button } from "../ui/button";
 
-const routes = [
-    { title: 'Features', path: "#features" },
-    { title: 'Resources', path: "#resources" },
-    { title: 'Pricing', path: "#pricing" },
-    { title: 'Testimonials', path: "#testimonial" },
-]
-
 const components: { title: string; href: string; description: string }[] = [
     {
         title: 'Alert Dialog',
@@ -173,10 +166,7 @@ const Header = () => {
 
 export default Header;
 
-const ListItem = React.forwardRef<
-    React.ElementRef<'a'>,
-    React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
+const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(({ title, children, ...props }, ref) => {
     return (
         <li>
             <NavigationMenuLink asChild>

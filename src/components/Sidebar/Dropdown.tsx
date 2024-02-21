@@ -112,7 +112,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
 
             if (!fileTitle) return;
 
-            const { data, error } = await updateFile({ title: fileTitle }, fId[1]);
+            const { error } = await updateFile({ title: fileTitle }, fId[1]);
 
             if (error) {
                 toast({ title: 'Error', variant: 'destructive', description: 'Could not update the title for this file', });
@@ -136,7 +136,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
                     folder: { iconId: selectedEmoji },
                 },
             });
-            const { data, error } = await updateFolder({ iconId: selectedEmoji }, id);
+            const { error } = await updateFolder({ iconId: selectedEmoji }, id);
             if (error) {
                 toast({ title: 'Error', variant: 'destructive', description: 'Could not update the emoji for this folder', });
             } else {
@@ -191,7 +191,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
                     workspaceId,
                 },
             });
-            const { data, error } = await updateFolder(
+            const { error } = await updateFolder(
                 { inTrash: `Deleted by ${user?.email}` },
                 pathId[0]
             );
@@ -212,7 +212,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
                     fileId: pathId[1],
                 },
             });
-            const { data, error } = await updateFile(
+            const { error } = await updateFile(
                 { inTrash: `Deleted by ${user?.email}` },
                 pathId[1]
             );
@@ -260,7 +260,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
             type: 'ADD_FILE',
             payload: { file: newFile, folderId: id, workspaceId },
         });
-        const { data, error } = await createFile(newFile);
+        const { error } = await createFile(newFile);
         if (error) {
             toast({ title: 'Error', variant: 'destructive', description: 'Could not create a file', });
         } else {

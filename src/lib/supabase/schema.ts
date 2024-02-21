@@ -6,8 +6,8 @@
  * @date 
  *
  */
-import { pgTable, uuid, timestamp, text, boolean, bigint, jsonb, integer } from "drizzle-orm/pg-core";
-import { prices, pricingPlanInterval, pricingType, products, subscriptionStatus, users } from "../../../migrations/schema";
+import { pgTable, uuid, timestamp, text, boolean, jsonb, integer } from "drizzle-orm/pg-core";
+import { prices, products, subscriptionStatus, users } from "../../../migrations/schema";
 import { relations, sql } from "drizzle-orm";
 
 /**

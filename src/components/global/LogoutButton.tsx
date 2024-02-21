@@ -13,7 +13,6 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { Button } from '../ui/button';
-import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';
 import { useAppState } from '@/src/lib/providers/stateProvider';
 
 interface LogoutButtonProps {
@@ -22,7 +21,6 @@ interface LogoutButtonProps {
 
 const LogoutButton: React.FC<LogoutButtonProps> = ({ children }) => {
 
-    const { user } = useSupabaseUser();
     const { dispatch } = useAppState() as any;
     const router = useRouter();
     const supabase = createClientComponentClient();

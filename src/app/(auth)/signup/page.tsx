@@ -22,7 +22,7 @@ import clsx from 'clsx'
 import { MailCheck } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -51,7 +51,7 @@ const SignUpFormSchema = z
  * @brief Signup Page
  */
 const Signup = () => {
-    const router = useRouter();
+
     const searchParams = useSearchParams();
     const [submitError, setSubmitError] = useState('');
     const [confirmation, setConfirmation] = useState(false);

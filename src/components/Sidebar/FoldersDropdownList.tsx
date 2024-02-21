@@ -40,7 +40,7 @@ const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({ workspaceFold
     // useSupabaseRealtime();
 
     const { state, dispatch, folderId } = useAppState() as any;
-    const { open, setOpen } = useSubscriptionModal();
+    const { setOpen } = useSubscriptionModal();
     const { toast } = useToast();
     const [folders, setFolders] = useState(workspaceFolders);
     const { subscription } = useSupabaseUser();
@@ -90,7 +90,7 @@ const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({ workspaceFold
             type: 'ADD_FOLDER',
             payload: { workspaceId, folder: { ...newFolder, files: [] } },
         });
-        const { data, error } = await createFolder(newFolder);
+        const { error } = await createFolder(newFolder);
         if (error) {
             toast({ title: 'Error', variant: 'destructive', description: 'Could not create the folder', });
         } else {

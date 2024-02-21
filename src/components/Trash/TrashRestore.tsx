@@ -29,7 +29,7 @@ const TrashRestore = () => {
 
     const stateFolders = state.workspaces.find((workspace) => workspace.id === workspaceId)?.folders.filter((folder) => folder.inTrash) || []; setFolders(stateFolders);
 
-    let stateFiles: File[] = [];
+    const stateFiles: File[] = [];
 
     state.workspaces.find((workspace) => workspace.id === workspaceId)?.folders.forEach((folder) => {
 
@@ -42,7 +42,6 @@ const TrashRestore = () => {
         }
       });
     });
-
     setFiles(stateFiles);
   }, [state, workspaceId]);
 

@@ -24,10 +24,12 @@ import { validate } from 'uuid';
  */
 export const createWorkspace = async (workspace: workspace) => {
     try {
-        const response = await db.insert(workspaces).values(workspace);
+        await db.insert(workspaces).values(workspace);
+
         return { data: null, error: null };
     } catch (error) {
         console.log(error);
+
         return { data: null, error: 'Error' };
     }
 };
@@ -124,8 +126,7 @@ export const getWorkspaceDetails = async (workspaceId: string) => {
 export const getFileDetails = async (fileId: string) => {
     const isValid = validate(fileId);
     if (!isValid) {
-        data: [];
-        error: 'Error';
+        console.log('🔴Error', Error);
     }
     try {
         const response = (await db.select().from(files).where(eq(files.id, fileId)).limit(1)) as unknown as File[];
@@ -167,8 +168,8 @@ export const deleteFolder = async (folderId: string) => {
 export const getFolderDetails = async (folderId: string) => {
     const isValid = validate(folderId);
     if (!isValid) {
-        data: [];
-        error: 'Error';
+
+        console.log('🔴Error', Error);
     }
 
     try {
@@ -291,7 +292,7 @@ export const getFiles = async (folderId: string) => {
  * @returns Response 
  */
 export const addCollaborators = async (users: User[], workspaceId: string) => {
-    const response = users.forEach(async (user: User) => {
+    users.forEach(async (user: User) => {
         const userExists = await db.query.customers.findFirst({
             where: (u: any, { eq }: any) =>
                 and(eq(u.userId, user.id), eq(u.workspaceId, workspaceId)),
@@ -309,20 +310,12 @@ export const addCollaborators = async (users: User[], workspaceId: string) => {
  * @returns Response 
  */
 export const removeCollaborators = async (users: User[], workspaceId: string) => {
-    const response = users.forEach(async (user: User) => {
-        const userExists = await db.query.collaborators.findFirst({
-            where: (u, { eq }) =>
-                and(eq(u.userId, user.id), eq(u.workspaceId, workspaceId)),
-        });
-        if (userExists)
-            await db
-                .delete(collaborators)
-                .where(
-                    and(
-                        eq(collaborators.workspaceId, workspaceId),
-                        eq(collaborators.userId, user.id)
-                    )
-                );
+    users.forEach(async (user: User) => {
+        const userExists = await db.query.collaborators.findFirst({ where: (u, { eq }) => and(eq(u.userId, user.id), eq(u.workspaceId, workspaceId)), });
+
+        if (userExists) {
+            await db.delete(collaborators).where(and(eq(collaborators.workspaceId, workspaceId), eq(collaborators.userId, user.id)));
+        }
     });
 };
 
@@ -370,7 +363,7 @@ export const getActiveProductsWithPrice = async () => {
  */
 export const createFolder = async (folder: Folder) => {
     try {
-        const results = await db.insert(folders).values(folder);
+        await db.insert(folders).values(folder);
         return { data: null, error: null };
     } catch (error) {
         console.log(error);
@@ -420,10 +413,8 @@ export const updateFolder = async (folder: Partial<Folder>, folderId: string) =>
  */
 export const updateFile = async (file: Partial<File>, fileId: string) => {
     try {
-        const response = await db
-            .update(files)
-            .set(file)
-            .where(eq(files.id, fileId));
+        await db.update(files).set(file).where(eq(files.id, fileId));
+
         return { data: null, error: null };
     } catch (error) {
         console.log(error);
@@ -441,10 +432,8 @@ export const updateFile = async (file: Partial<File>, fileId: string) => {
 export const updateWorkspace = async (workspace: Partial<workspace>, workspaceId: string) => {
     if (!workspaceId) return;
     try {
-        await db
-            .update(workspaces)
-            .set(workspace)
-            .where(eq(workspaces.id, workspaceId));
+        await db.update(workspaces).set(workspace).where(eq(workspaces.id, workspaceId));
+
         return { data: null, error: null };
     } catch (error) {
         console.log(error);

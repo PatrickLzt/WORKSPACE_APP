@@ -9,18 +9,17 @@
 
 interface LayoutProps {
     children: React.ReactNode
-    params: any
 }
 
 /**
  * @brief Root Layout for the dashboard
+ * 
  * @param children
- * @param params
  * 
  * @returns Layout template
  * 
  */
-const Layout: React.FC<LayoutProps> = ({ children, params }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <main className='flex over-hidden h-screen'>
             {children}
