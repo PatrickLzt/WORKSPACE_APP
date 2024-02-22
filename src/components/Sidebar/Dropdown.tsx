@@ -142,6 +142,22 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
             } else {
                 toast({ title: 'Success', description: 'Update emoji for the folder', });
             }
+        } else {
+            dispatch({
+                type: 'UPDATE_FILE',
+                payload: {
+                    workspaceId,
+                    folderId: id,
+                    fileId: id.split('folder')[1],
+                    file: { iconId: selectedEmoji },
+                },
+            });
+            const { error } = await updateFile({ iconId: selectedEmoji }, id.split('folder')[1]);
+            if (error) {
+                toast({ title: 'Error', variant: 'destructive', description: 'Could not update the emoji for this file', });
+            } else {
+                toast({ title: 'Success', description: 'Update emoji for the file', });
+            }
         }
     };
 
@@ -270,7 +286,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
 
     return (
         <AccordionItem value={id} className={listStyles} onClick={(e: any) => { e.stopPropagation(); navigatatePage(id, listType); }}>
-            <AccordionTrigger id={listType} className="hover:no-underline p-2 dark:text-muted-foreground text-sm" disabled={listType === 'file'}>
+            <AccordionTrigger id={listType} className="hover:no-underline p-2 dark:text-muted-foreground text-sm">
                 <div className={groupIdentifies}>
                     <div className="flex gap-4 items-center justify-center overflow-hidden">
                         <div className="relative">

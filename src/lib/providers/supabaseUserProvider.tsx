@@ -40,7 +40,13 @@ const SupabaseUserContext = createContext<SupabaseUserContextType>({
  * @returns SupabaseUserContextType
  */
 export const useSupabaseUser = () => {
-    return useContext(SupabaseUserContext);
+    const context = useContext(SupabaseUserContext);
+
+    if (!context) {
+        throw new Error('useSupabaseUser must be used within a SupabaseUserProvider');
+    }
+
+    return context
 };
 
 interface SupabaseUserProviderProps {

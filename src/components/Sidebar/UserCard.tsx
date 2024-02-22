@@ -48,10 +48,7 @@ const UserCard: React.FC<UserCardProps> = async ({ subscription }) => {
         avatarPath = supabase.storage.from('avatars').getPublicUrl(response.avatarUrl)?.data.publicUrl;
     }
 
-    const profile = {
-        ...response,
-        avatarUrl: avatarPath,
-    };
+    const profile = { ...response, avatarUrl: avatarPath };
 
     return (
         <article className="hidden sm:flex  justify-between  items-center  px-4  py-2  dark:bg-Neutrals/neutrals-12 rounded-3xl">
