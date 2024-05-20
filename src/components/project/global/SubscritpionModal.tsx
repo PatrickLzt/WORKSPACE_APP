@@ -12,12 +12,12 @@
 
 import React, { useState } from 'react';
 
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import Loader from './Loader';
-import { useToast } from '../ui/use-toast';
+import { useToast } from '../../ui/use-toast';
 import { Price, ProductWithPrice } from '@/src/lib/supabase/supabase.types';
 import { useSubscriptionModal } from '@/src/lib/providers/subscriptionModalProvider';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../ui/dialog';
 import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';
 import { formatPrice, postData } from '@/src/lib/utils';
 import { getStripe } from '@/src/lib/stripe/stripeClients';
@@ -34,6 +34,7 @@ interface SubscriptionModalProps {
  * @returns JSX.Element
  */
 const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ products }) => {
+
     const { open, setOpen } = useSubscriptionModal();
     const { toast } = useToast();
     const { subscription } = useSupabaseUser();

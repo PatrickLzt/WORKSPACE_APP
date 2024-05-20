@@ -20,18 +20,18 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from '../ui/card';
+} from '../../ui/card';
 import EmojiPicker from '../global/EmojiPicker';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { Subscription, workspace } from '../../lib/supabase/supabase.types';
-import { Button } from '../ui/button';
+import { Label } from '../../ui/label';
+import { Input } from '../../ui/input';
+import { Subscription, workspace } from '../../../lib/supabase/supabase.types';
+import { Button } from '../../ui/button';
 import Loader from '../global/Loader';
-import { createWorkspace } from '../../lib/supabase/queries';
-import { useToast } from '../ui/use-toast';
+import { createWorkspace } from '../../../lib/supabase/queries';
+import { useToast } from '../../ui/use-toast';
 import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { CreateWorkspaceFormSchema } from '../../lib/types';
+import { CreateWorkspaceFormSchema } from '../../../lib/types';
 import { z } from 'zod';
 import { useAppState } from '@/src/lib/providers/stateProvider';
 
@@ -42,16 +42,19 @@ interface DashboardSetupProps {
 
 /**
  * @brief DashboardSetup component
+ * 
  * @param { subscription, user }
  * 
  * @returns JSX.Element
  */
 const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) => {
+
     const { toast } = useToast();
-    const router = useRouter();
     const { dispatch } = useAppState();
     const [selectedEmoji, setSelectedEmoji] = useState('💼');
     const supabase = createClientComponentClient();
+    const router = useRouter();
+
     const { register, handleSubmit, reset, formState: { isSubmitting: isLoading, errors }, } = useForm<z.infer<typeof CreateWorkspaceFormSchema>>({
         mode: 'onChange',
         defaultValues: {
@@ -77,6 +80,7 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
                 toast({ variant: 'destructive', title: 'Error! Could not upload your workspace logo' });
             }
         }
+
         try {
             const newWorkspace: workspace = {
                 data: null,
@@ -89,19 +93,16 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
                 logo: filePath || null,
                 bannerUrl: '',
             };
+
             const { error: createError } = await createWorkspace(newWorkspace);
+
             if (createError) {
                 throw new Error();
             }
-            dispatch({
-                type: 'ADD_WORKSPACE',
-                payload: { ...newWorkspace, folders: [] },
-            });
 
-            toast({
-                title: 'Workspace Created',
-                description: `${newWorkspace.title} has been created successfully.`,
-            });
+            dispatch({ type: 'ADD_WORKSPACE', payload: { ...newWorkspace, folders: [] }, });
+
+            toast({ title: 'Workspace Created', description: `${newWorkspace.title} has been created successfully.`, });
 
             router.replace(`/dashboard/${newWorkspace.id}`);
         } catch (error) {

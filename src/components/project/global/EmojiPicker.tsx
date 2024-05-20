@@ -6,8 +6,13 @@
  * @date 
  *
  */
+
 import dynamic from "next/dynamic"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger
+} from "../../ui/popover"
 
 interface EmojiPickerProps {
     children: React.ReactNode,
@@ -16,6 +21,7 @@ interface EmojiPickerProps {
 
 /**
  * @brief EmojiPicker component
+ * 
  * @param { children, getValue }
  * 
  * @returns JSX.Element

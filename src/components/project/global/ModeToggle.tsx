@@ -11,10 +11,11 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import { Moon, Sun } from 'lucide-react';
 
 const ModeToggle = () => {
+
     const { setTheme, theme } = useTheme();
     return (
         <Button variant={'outline'} size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>

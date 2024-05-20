@@ -10,9 +10,15 @@
 /* Use Client side rendering */
 'use client';
 
-
 import clsx from 'clsx';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from '../../ui/dialog';
 
 interface CustomDialogTriggerProps {
     header?: string;
@@ -30,6 +36,7 @@ interface CustomDialogTriggerProps {
  * @returns JSX.Element
  */
 const CustomDialogTrigger: React.FC<CustomDialogTriggerProps> = ({ header, content, children, description, className, }) => {
+
     return (
         <Dialog>
             <DialogTrigger className={clsx('', className)}>{children}</DialogTrigger>

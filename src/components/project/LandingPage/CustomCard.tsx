@@ -6,7 +6,7 @@
  * @date 
  *
  */
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "../../ui/card"
 import { cn } from "@/src/lib/utils"
 
 type CardProps = React.ComponentProps<typeof Card>

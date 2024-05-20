@@ -11,20 +11,20 @@
 'use client';
 
 import { useSupabaseUser } from "@/src/lib/providers/supabaseUserProvider";
-import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { User, workspace } from "@/src/lib/supabase/supabase.types";
 import { v4 } from "uuid";
 import { addCollaborators, createWorkspace } from "@/src/lib/supabase/queries";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Lock, Plus, Share } from "lucide-react";
-import { Button } from "../ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { ScrollArea } from "../ui/scroll-area";
 import CollaboratorSearch from "./CollaboratorSearch";
+import { useToast } from "../../ui/use-toast";
+import { Label } from "../../ui/label";
+import { Input } from "../../ui/input";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../../ui/select";
+import { Button } from "../../ui/button";
+import { ScrollArea } from "../../ui/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 /**
  * @brief WorkspaceCreator component

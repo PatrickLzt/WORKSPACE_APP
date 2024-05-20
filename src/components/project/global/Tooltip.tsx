@@ -12,7 +12,8 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '../ui/tooltip';
+} from '../../ui/tooltip';
+
 interface TooltipComponentProps {
     children: React.ReactNode;
     message: string;
@@ -25,10 +26,7 @@ interface TooltipComponentProps {
  * 
  * @returns JSX.Element
  */
-const TooltipComponent: React.FC<TooltipComponentProps> = ({
-    children,
-    message,
-}) => {
+const TooltipComponent: React.FC<TooltipComponentProps> = ({ children, message }) => {
     return (
         <TooltipProvider>
             <Tooltip>

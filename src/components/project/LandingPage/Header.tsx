@@ -13,9 +13,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../../ui/navigation-menu";
 import { cn } from "@/src/lib/utils";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -61,6 +61,7 @@ const components: { title: string; href: string; description: string }[] = [
  * @returns The JSX Component for the Header
  */
 const Header = () => {
+
     const [path, setPath] = useState('#products');
     return (
         <header className="p-4 flex justify-center items-center">
@@ -73,14 +74,8 @@ const Header = () => {
             <NavigationMenu className="hidden md:block">
                 <NavigationMenuList className="gap-6">
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger
-                            onClick={() => setPath('#resources')}
-                            className={cn({
-                                'dark:text-white': path === '#resources',
-                                'dark:text-white/40': path !== '#resources',
-                                'font-normal': true,
-                                'text-xl': true,
-                            })}>
+                        <NavigationMenuTrigger onClick={() => setPath('#resources')}
+                            className={cn({ 'dark:text-white': path === '#resources', 'dark:text-white/40': path !== '#resources', 'font-normal': true, 'text-xl': true, })}>
                             Resources
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -103,14 +98,8 @@ const Header = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger
-                            onClick={() => setPath('#pricing')}
-                            className={cn({
-                                'dark:text-white': path === '#pricing',
-                                'dark:text-white/40': path !== '#pricing',
-                                'font-normal': true,
-                                'text-xl': true,
-                            })}>
+                        <NavigationMenuTrigger onClick={() => setPath('#pricing')}
+                            className={cn({ 'dark:text-white': path === '#pricing', 'dark:text-white/40': path !== '#pricing', 'font-normal': true, 'text-xl': true, })}>
                             Pricing
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -136,13 +125,7 @@ const Header = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink
-                            className={cn(navigationMenuTriggerStyle(), {
-                                'dark:text-white': path === '#testimonials',
-                                'dark:text-white/40': path !== '#testimonials',
-                                'font-normal': true,
-                                'text-xl': true,
-                            })}>
+                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), { 'dark:text-white': path === '#testimonials', 'dark:text-white/40': path !== '#testimonials', 'font-normal': true, 'text-xl': true, })}>
                             Testimonial
                         </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -166,6 +149,13 @@ const Header = () => {
 
 export default Header;
 
+/**
+ * @brief ListItem Component
+ * 
+ * @param title The title of the list item
+ * 
+ * @returns The JSX Component for the ListItem
+ */
 const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(({ title, children, ...props }, ref) => {
     return (
         <li>

@@ -12,14 +12,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { Input } from '../ui/input';
-import { ScrollArea } from '../ui/scroll-area';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Button } from '../ui/button';
 import { User } from '@/src/lib/supabase/supabase.types';
 import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
 import { Search } from 'lucide-react';
+import { Input } from '../../ui/input';
+import { ScrollArea } from '../../ui/scroll-area';
+import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar';
+import { Button } from '../../ui/button';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet';
 
 interface CollaboratorSearchProps {
     existingCollaborators: User[] | [];
@@ -44,7 +44,9 @@ const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({ children, exist
 
     useEffect(() => {
         return () => {
-            if (timerRef.current) clearTimeout(timerRef.current);
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
         };
     }, []);
 
