@@ -21,7 +21,7 @@ type SocketContextType = {
 /**
  * @brief Socket Provider
  * 
- * @param { children }
+ * @param { children } 
  * 
  * @returns JSX.Element
  */
@@ -51,7 +51,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
-        const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, { path: '/api/socket/io', addTrailingSlash: false, });
+        const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, { path: '/api/socket/io', addTrailingSlash: false });
 
         socketInstance.on('connect', () => {
             setIsConnected(true);

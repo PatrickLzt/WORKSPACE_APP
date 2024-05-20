@@ -70,14 +70,15 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({ chil
 
     useEffect(() => {
         const getUser = async () => {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
+            const { data: { user }, } = await supabase.auth.getUser();
+
             if (user) {
-                console.log(user);
+
                 setUser(user);
                 const { data, error } = await getUserSubscriptionStatus(user.id);
+
                 if (data) setSubscription(data);
+
                 if (error) {
                     toast({
                         title: 'Unexpected Error',
@@ -87,8 +88,10 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({ chil
                 }
             }
         };
+
         getUser();
     }, [supabase, toast]);
+
     return (
         <SupabaseUserContext.Provider value={{ user, subscription }}>
             {children}

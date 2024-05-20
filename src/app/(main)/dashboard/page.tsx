@@ -7,7 +7,7 @@
  *
  */
 
-import DashboardSetup from "@/src/components/DashoardSetup/DashboardSetup"
+import DashboardSetup from "@/src/components/project/DashoardSetup/DashboardSetup"
 import db from "@/src/lib/supabase/db"
 import { getUserSubscriptionStatus } from "@/src/lib/supabase/queries"
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
@@ -35,11 +35,13 @@ const DashboardPage = async () => {
 
     if (subscriptionError) return
 
-    if (!workspace) return <div className="bag-background h-screen w-screen flex justify-center items-center">
-        <DashboardSetup user={user} subscription={subscription}>
-
-        </DashboardSetup>
-    </div>
+    if (!workspace) {
+        return (
+            <div className="bag-background h-screen w-screen flex justify-center items-center">
+                <DashboardSetup user={user} subscription={subscription} />
+            </div>
+        )
+    }
 
     redirect(`/dashboard/${workspace.id}`)
 }

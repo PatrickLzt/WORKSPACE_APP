@@ -7,8 +7,8 @@
  *
  */
 
-import { TitleSection } from "@/src/components/LandingPage/TitleSection";
-import { CustomCard } from "@/src/components/LandingPage/CustomCard";
+import { TitleSection } from "@/src/components/project/LandingPage/TitleSection";
+import { CustomCard } from "@/src/components/project/LandingPage/CustomCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
 import { Button } from "@/src/components/ui/button";
 import { CardContent, CardDescription, CardTitle } from "@/src/components/ui/card";

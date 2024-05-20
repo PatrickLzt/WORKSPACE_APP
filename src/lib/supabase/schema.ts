@@ -156,6 +156,7 @@ export const collaborators = pgTable('collaborators', {
 export const productsRelations = relations(products, ({ many }) => ({
     prices: many(prices),
 }));
+
 /**
  * @brief Database Relations of prices schema
  * 

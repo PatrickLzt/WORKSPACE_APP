@@ -157,6 +157,14 @@ export const PRICING_CARDS = [
     },
 ];
 
+/**
+ * @brief Pricing plans object
+ * 
+ */
 export const PRICING_PLANS = { proplan: 'Pro Plan', freeplan: 'Free Plan' };
 
+/**
+ * @brief Max folders for free plan
+ * 
+ */
 export const MAX_FOLDERS_FREE_PLAN = 3;

@@ -25,17 +25,18 @@ export const formatPrice = (price: Price) => {
  * @returns string
  */
 export const getURL = () => {
-  let url = process?.env?.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000/';
+  let url = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000/';
 
   url = url.includes('http') ? url : `https://${url}`;
   url = url.charAt(url.length - 1) === '/' ? url : `${url}/`;
+
   return url;
 };
 
 /**
  * @brief Posting Data
  * 
- * @param { url, data} 
+ * @param {url, data} 
  * 
  * @returns Response
  */
@@ -49,13 +50,14 @@ export const postData = async ({ url, data, }: { url: string; data?: { price: Pr
     console.log('Error in postData', { url, data, res });
     throw Error(res.statusText);
   }
+
   return res.json();
 };
 
 /**
  * @brief Convert to DateTime
  * 
- * @param secs
+ * @param secs 
  *  
  * @returns The date in seconds
  */

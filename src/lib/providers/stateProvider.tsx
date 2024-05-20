@@ -30,8 +30,14 @@ interface AppState {
 }
 
 type Action =
-    | { type: 'ADD_WORKSPACE'; payload: appWorkspacesType }
-    | { type: 'DELETE_WORKSPACE'; payload: string }
+    | {
+        type: 'ADD_WORKSPACE';
+        payload: appWorkspacesType
+    }
+    | {
+        type: 'DELETE_WORKSPACE';
+        payload: string
+    }
     | {
         type: 'UPDATE_WORKSPACE';
         payload: { workspace: Partial<appWorkspacesType>; workspaceId: string };
@@ -95,65 +101,53 @@ const initialState: AppState = { workspaces: [] };
 const appReducer = (state: AppState = initialState, action: Action): AppState => {
     switch (action.type) {
         case 'ADD_WORKSPACE':
-            return {
-                ...state,
-                workspaces: [...state.workspaces, action.payload],
-            };
+            return { ...state, workspaces: [...state.workspaces, action.payload] };
+
         case 'DELETE_WORKSPACE':
-            return {
-                ...state,
-                workspaces: state.workspaces.filter(
-                    (workspace) => workspace.id !== action.payload
-                ),
-            };
+            return { ...state, workspaces: state.workspaces.filter((workspace) => workspace.id !== action.payload) };
+
         case 'UPDATE_WORKSPACE':
             return {
-                ...state,
-                workspaces: state.workspaces.map((workspace) => {
+                ...state, workspaces: state.workspaces.map((workspace) => {
                     if (workspace.id === action.payload.workspaceId) {
-                        return {
-                            ...workspace,
-                            ...action.payload.workspace,
-                        };
+                        return { ...workspace, ...action.payload.workspace, };
                     }
-                    return workspace;
-                }),
+                    return workspace
+                })
             };
+
         case 'SET_WORKSPACES':
-            return {
-                ...state,
-                workspaces: action.payload.workspaces,
-            };
+            return { ...state, workspaces: action.payload.workspaces, };
+
         case 'SET_FOLDERS':
             return {
-                ...state,
-                workspaces: state.workspaces.map((workspace) => {
+                ...state, workspaces: state.workspaces.map((workspace) => {
                     if (workspace.id === action.payload.workspaceId) {
                         return {
                             ...workspace,
-                            folders: action.payload.folders.sort(
-                                (a, b) =>
-                                    (a.createdAt ? new Date(a.createdAt).getTime() : 0) -
-                                    (b.createdAt ? new Date(b.createdAt).getTime() : 0)
+                            folders: action.payload.folders.sort((a, b) =>
+                                (a.createdAt ? new Date(a.createdAt).getTime() : 0) -
+                                (b.createdAt ? new Date(b.createdAt).getTime() : 0)
                             ),
                         };
                     }
                     return workspace;
-                }),
+                })
             };
+
         case 'ADD_FOLDER':
             return {
                 ...state,
                 workspaces: state.workspaces.map((workspace) => {
                     return {
                         ...workspace,
-                        folders: [...workspace.folders, action.payload.folder].sort(
-                            (a, b) =>
-                                (a.createdAt && b.createdAt) ? new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() : 0
+                        folders: [...workspace.folders, action.payload.folder].sort((a, b) =>
+                            (a.createdAt && b.createdAt) ? new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() : 0
                         ),
                     };
                 }),
             };
+
         case 'UPDATE_FOLDER':
             return {
                 ...state,
@@ -172,6 +166,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                     return workspace;
                 }),
             };
+
         case 'DELETE_FOLDER':
             return {
                 ...state,
@@ -187,6 +182,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                     return workspace;
                 }),
             };
+
         case 'SET_FILES':
             return {
                 ...state,
@@ -208,6 +204,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                     return workspace;
                 }),
             };
+
         case 'ADD_FILE':
             return {
                 ...state,
@@ -219,10 +216,9 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                                 if (folder.id === action.payload.folderId) {
                                     return {
                                         ...folder,
-                                        files: [...folder.files, action.payload.file].sort(
-                                            (a, b) =>
-                                                (a.createdAt ? new Date(a.createdAt).getTime() : 0) -
-                                                (b.createdAt ? new Date(b.createdAt).getTime() : 0)
+                                        files: [...folder.files, action.payload.file].sort((a, b) =>
+                                            (a.createdAt ? new Date(a.createdAt).getTime() : 0) -
+                                            (b.createdAt ? new Date(b.createdAt).getTime() : 0)
                                         ),
                                     };
                                 }
@@ -233,6 +229,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                     return workspace;
                 }),
             };
+
         case 'DELETE_FILE':
             return {
                 ...state,
@@ -244,9 +241,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                                 if (folder.id === action.payload.folderId) {
                                     return {
                                         ...folder,
-                                        files: folder.files.filter(
-                                            (file) => file.id !== action.payload.fileId
-                                        ),
+                                        files: folder.files.filter((file) => file.id !== action.payload.fileId),
                                     };
                                 }
                                 return folder;
@@ -256,6 +251,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                     return workspace;
                 }),
             };
+
         case 'UPDATE_FILE':
             return {
                 ...state,
@@ -269,10 +265,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                                         ...folder,
                                         files: folder.files.map((file) => {
                                             if (file.id === action.payload.fileId) {
-                                                return {
-                                                    ...file,
-                                                    ...action.payload.file,
-                                                };
+                                                return { ...file, ...action.payload.file, };
                                             }
                                             return file;
                                         }),
@@ -285,6 +278,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
                     return workspace;
                 }),
             };
+
         default:
             return initialState;
     }

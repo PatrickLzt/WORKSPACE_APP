@@ -7,9 +7,7 @@
  *
  */
 
-export const dynamic = 'force-dynamic';
-
-import QuillEditor from '@/src/components/QuillEditor/QuillEditor';
+import QuillEditor from '@/src/components/project/QuillEditor/QuillEditor';
 import { getWorkspaceDetails } from '@/src/lib/supabase/queries';
 import { redirect } from 'next/navigation';
 
@@ -21,8 +19,13 @@ import { redirect } from 'next/navigation';
  * @returns JSX.Element 
  */
 const Workspace = async ({ params }: { params: { workspaceId: string } }) => {
+
     const { data, error } = await getWorkspaceDetails(params.workspaceId);
-    if (error || !data.length) redirect('/dashboard');
+
+    if (error || !data.length) {
+        redirect('/dashboard');
+    }
+
     return (
         <div className="relative">
             <QuillEditor dirType="workspace" fileId={params.workspaceId} dirDetails={data[0] || {}} />

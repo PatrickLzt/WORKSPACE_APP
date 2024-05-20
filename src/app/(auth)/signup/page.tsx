@@ -10,7 +10,7 @@
 /* Use client side render  */
 "use client"
 
-import Loader from '@/src/components/global/Loader'
+import Loader from '@/src/components/project/global/Loader'
 import { Alert, AlertDescription, AlertTitle } from '@/src/components/ui/alert'
 import { Button } from '@/src/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from '@/src/components/ui/form'
@@ -30,22 +30,14 @@ import { z } from 'zod'
 /**
  * @brief Signup Schema 
  */
-const SignUpFormSchema = z
-    .object({
-        email: z.string().describe('Email').email({ message: 'Invalid Email' }),
-        password: z
-            .string()
-            .describe('Password')
-            .min(6, 'Password must be minimum 6 characters'),
-        confirmPassword: z
-            .string()
-            .describe('Confirm Password')
-            .min(6, 'Password must be minimum 6 characters'),
-    })
-    .refine((data) => data.password === data.confirmPassword, {
-        message: "Passwords don't match.",
-        path: ['confirmPassword'],
-    });
+const SignUpFormSchema = z.object({
+    email: z.string().describe('Email').email({ message: 'Invalid Email' }),
+    password: z.string().describe('Password').min(6, 'Password must be minimum 6 characters'),
+    confirmPassword: z.string().describe('Confirm Password').min(6, 'Password must be minimum 6 characters'),
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match.",
+    path: ['confirmPassword'],
+});
 
 /**
  * @brief Signup Page
@@ -61,20 +53,14 @@ const Signup = () => {
         return searchParams.get('error_description') || '';
     }, [searchParams]);
 
-    const confirmationAndErrorStyles = useMemo(
-        () =>
-            clsx('bg-primary', {
-                'bg-red-500/10': codeExchangeError,
-                'border-red-500/50': codeExchangeError,
-                'text-red-700': codeExchangeError,
-            }),
-        [codeExchangeError]
-    );
+    const confirmationAndErrorStyles = useMemo(() => clsx('bg-primary', {
+        'bg-red-500/10': codeExchangeError,
+        'border-red-500/50': codeExchangeError,
+        'text-red-700': codeExchangeError,
+    }), [codeExchangeError]);
 
     const form = useForm<z.infer<typeof SignUpFormSchema>>({
-        mode: 'onChange',
-        resolver: zodResolver(SignUpFormSchema),
-        defaultValues: { email: '', password: '', confirmPassword: '' },
+        mode: 'onChange', resolver: zodResolver(SignUpFormSchema), defaultValues: { email: '', password: '', confirmPassword: '' },
     });
 
     const isLoading = form.formState.isSubmitting;
@@ -90,10 +76,7 @@ const Signup = () => {
 
     return (
         <Form {...form}>
-            <form
-                onChange={() => {
-                    if (submitError) setSubmitError('');
-                }} onSubmit={form.handleSubmit(onSubmit)} className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
+            <form onChange={() => { if (submitError) setSubmitError('') }} onSubmit={form.handleSubmit(onSubmit)} className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
                 <Link href="/" className=" w-full flex justify-left items-center">
                     <Image src="/worksp4ceLogo.svg" alt="worksp4ce Logo" width={50} height={50} />
                     <span className="font-semibold dark:text-white text-4xl first-letter:ml-2">

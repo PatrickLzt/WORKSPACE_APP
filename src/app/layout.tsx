@@ -28,11 +28,7 @@ export const metadata: Metadata = {
  * @brief Root Layout
  * 
  */
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={twMerge('bg-background', inter.className)}>

@@ -21,8 +21,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
-import Loader from "@/src/components/global/Loader"
 import { actionLoginUser } from "@/src/lib/serverActions/authActions"
+import Loader from "@/src/components/project/global/Loader"
 
 /**
  * @brief Home Page
@@ -53,9 +53,7 @@ const LoginPage = () => {
 
     return (
         <Form {...form}>
-            <form onChange={() => {
-                if (submitError) setSubmitError('');
-            }} onSubmit={form.handleSubmit(onSubmit)} className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
+            <form onChange={() => { if (submitError) setSubmitError('') }} onSubmit={form.handleSubmit(onSubmit)} className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
                 <Link href="/" className=" w-full flex justify-left items-center">
                     <Image src="/worksp4ceLogo.svg" alt="worksp4ce Logo" width={50} height={50} />
                     <span

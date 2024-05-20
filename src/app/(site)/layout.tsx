@@ -7,7 +7,7 @@
  *
  */
 
-import Header from "@/src/components/LandingPage/Header";
+import Header from "@/src/components/project/LandingPage/Header";
 
 /**
  * @brief Layout for the Home Page

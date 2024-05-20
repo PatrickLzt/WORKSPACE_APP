@@ -7,8 +7,8 @@
  *
  */
 
-import MobileSidebar from "@/src/components/Sidebar/MobileSidebar";
-import Sidebar from "@/src/components/Sidebar/Sidebar";
+import MobileSidebar from "@/src/components/project/Sidebar/MobileSidebar";
+import Sidebar from "@/src/components/project/Sidebar/Sidebar";
 
 interface LayoutProps {
     children: React.ReactNode

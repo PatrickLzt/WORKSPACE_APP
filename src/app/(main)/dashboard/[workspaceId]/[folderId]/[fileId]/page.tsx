@@ -9,7 +9,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import QuillEditor from '@/src/components/QuillEditor/QuillEditor';
+import QuillEditor from '@/src/components/project/QuillEditor/QuillEditor';
 import { getFileDetails } from '@/src/lib/supabase/queries';
 import { redirect } from 'next/navigation';
 
@@ -17,8 +17,12 @@ import { redirect } from 'next/navigation';
  * @brief Page for file details
  */
 const File = async ({ params }: { params: { fileId: string } }) => {
+
     const { data, error } = await getFileDetails(params.fileId);
-    if (error || !data.length) redirect('/dashboard');
+
+    if (error || !data.length) {
+        redirect('/dashboard');
+    }
 
     return (
         <div className="relative ">
