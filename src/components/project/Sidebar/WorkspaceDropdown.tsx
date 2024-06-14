@@ -31,7 +31,7 @@ interface WorkspaceDropdownProps {
  * 
  * @returns JSX.Element
  */
-const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({ privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces, defaultValue, }) => {
+export default function WorkspaceDropdown({ privateWorkspaces, collaboratingWorkspaces, sharedWorkspaces, defaultValue, }: WorkspaceDropdownProps) {
 
     const { dispatch, state } = useAppState() as any;
     const [selectedOption, setSelectedOption] = useState(defaultValue);
@@ -114,6 +114,4 @@ const WorkspaceDropdown: React.FC<WorkspaceDropdownProps> = ({ privateWorkspaces
             )}
         </div>
     );
-};
-
-export default WorkspaceDropdown;
+}

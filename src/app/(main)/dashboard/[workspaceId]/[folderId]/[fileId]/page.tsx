@@ -16,7 +16,7 @@ import { redirect } from 'next/navigation';
 /**
  * @brief Page for file details
  */
-const File = async ({ params }: { params: { fileId: string } }) => {
+export default async function File({ params }: { params: { fileId: string } }) {
 
     const { data, error } = await getFileDetails(params.fileId);
 
@@ -29,6 +29,4 @@ const File = async ({ params }: { params: { fileId: string } }) => {
             <QuillEditor dirType="file" fileId={params.fileId} dirDetails={data[0] || {}} />
         </div>
     );
-};
-
-export default File;
+}

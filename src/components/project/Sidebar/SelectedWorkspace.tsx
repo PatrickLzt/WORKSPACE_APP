@@ -28,7 +28,7 @@ interface SelectedWorkspaceProps {
  * 
  * @returns JSX.Element
  */
-const SelectedWorkspace: React.FC<SelectedWorkspaceProps> = ({ workspace, onClick, }) => {
+export default function SelectedWorkspace({ workspace, onClick, }: SelectedWorkspaceProps) {
 
     const supabase = createClientComponentClient();
     const [workspaceLogo, setWorkspaceLogo] = useState('/worksp4ceLogo.svg');
@@ -52,6 +52,4 @@ const SelectedWorkspace: React.FC<SelectedWorkspaceProps> = ({ workspace, onClic
             </Link>
         </>
     );
-};
-
-export default SelectedWorkspace;
+}

@@ -19,7 +19,7 @@ import { redirect } from "next/navigation"
  * 
  * @returns JSX.Element
  */
-const DashboardPage = async () => {
+export default async function DashboardPage() {
 
     const supabase = createServerActionClient({ cookies })
 
@@ -45,5 +45,3 @@ const DashboardPage = async () => {
 
     redirect(`/dashboard/${workspace.id}`)
 }
-
-export default DashboardPage

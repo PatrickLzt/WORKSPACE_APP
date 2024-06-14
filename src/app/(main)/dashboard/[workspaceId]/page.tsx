@@ -18,7 +18,7 @@ import { redirect } from 'next/navigation';
  * 
  * @returns JSX.Element 
  */
-const Workspace = async ({ params }: { params: { workspaceId: string } }) => {
+export async function Workspace({ params }: { params: { workspaceId: string } }) {
 
     const { data, error } = await getWorkspaceDetails(params.workspaceId);
 
@@ -31,6 +31,4 @@ const Workspace = async ({ params }: { params: { workspaceId: string } }) => {
             <QuillEditor dirType="workspace" fileId={params.workspaceId} dirDetails={data[0] || {}} />
         </div>
     );
-};
-
-export default Workspace;
+}

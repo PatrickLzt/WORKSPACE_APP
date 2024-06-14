@@ -15,7 +15,7 @@ import { z } from 'zod';
 import { Label } from '../../ui/label';
 import { Input } from '../../ui/input';
 import { Button } from '../../ui/button';
-import Loader from '../global/Loader';
+import Loader from '../../thirdParty/Loader';
 import { useAppState } from '@/src/lib/providers/stateProvider';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { UploadBannerFormSchema } from '@/src/lib/types';
@@ -33,7 +33,7 @@ interface BannerUploadFormProps {
  *  
  * @returns JSX.Element 
  */
-const BannerUploadForm: React.FC<BannerUploadFormProps> = ({ dirType, id }) => {
+export default function BannerUploadForm({ dirType, id }: BannerUploadFormProps): JSX.Element {
 
     const supabase = createClientComponentClient();
     const { workspaceId, folderId, dispatch } = useAppState();
@@ -118,6 +118,4 @@ const BannerUploadForm: React.FC<BannerUploadFormProps> = ({ dirType, id }) => {
             </Button>
         </form>
     );
-};
-
-export default BannerUploadForm;
+}

@@ -26,7 +26,7 @@ import { Label } from '../../ui/label';
 import { Input } from '../../ui/input';
 import { Subscription, workspace } from '../../../lib/supabase/supabase.types';
 import { Button } from '../../ui/button';
-import Loader from '../global/Loader';
+import Loader from '../../thirdParty/Loader';
 import { createWorkspace } from '../../../lib/supabase/queries';
 import { useToast } from '../../ui/use-toast';
 import { useRouter } from 'next/navigation';
@@ -47,7 +47,7 @@ interface DashboardSetupProps {
  * 
  * @returns JSX.Element
  */
-const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) => {
+export default function DashboardSetup({ user, subscription }: DashboardSetupProps): JSX.Element {
 
     const { toast } = useToast();
     const { dispatch } = useAppState();
@@ -171,6 +171,4 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
             </CardContent>
         </Card>
     );
-};
-
-export default DashboardSetup;
+}

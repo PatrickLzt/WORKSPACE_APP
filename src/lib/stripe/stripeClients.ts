@@ -16,11 +16,11 @@ let stripePromise: Promise<Stripe | null>;
  * 
  * @returns Promise<Stripe>
  */
-export const getStripe = () => {
+export function getStripe() {
 
     if (!stripePromise) {
         stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '');
     }
 
     return stripePromise;
-};
+}

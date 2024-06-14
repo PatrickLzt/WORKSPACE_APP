@@ -35,7 +35,7 @@ interface CustomDialogTriggerProps {
  * 
  * @returns JSX.Element
  */
-const CustomDialogTrigger: React.FC<CustomDialogTriggerProps> = ({ header, content, children, description, className, }) => {
+export default function CustomDialogTrigger({ header, content, children, description, className, }: CustomDialogTriggerProps) {
 
     return (
         <Dialog>
@@ -49,6 +49,4 @@ const CustomDialogTrigger: React.FC<CustomDialogTriggerProps> = ({ header, conte
             </DialogContent>
         </Dialog>
     );
-};
-
-export default CustomDialogTrigger;
+}

@@ -13,10 +13,10 @@ import { cookies } from "next/headers";
 
 /**
  * @brief Callback route (GET)
+ * 
  * @param req 
  * 
- * @returns Redirect to dashboard
- *  
+ * @returns Redirect to dashboard 
  */
 export async function GET(req: NextRequest) {
     const reqURL = new URL(req.url);

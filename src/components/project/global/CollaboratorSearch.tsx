@@ -36,7 +36,7 @@ interface CollaboratorSearchProps {
  * 
  * @returns JSX.Element
  */
-const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({ children, existingCollaborators, getCollaborator, }) => {
+export default function CollaboratorSearch({ children, existingCollaborators, getCollaborator, }: CollaboratorSearchProps) {
 
     const { user } = useSupabaseUser();
     const [searchResults] = useState<User[] | []>([]);
@@ -99,6 +99,4 @@ const CollaboratorSearch: React.FC<CollaboratorSearchProps> = ({ children, exist
             </SheetContent>
         </Sheet>
     );
-};
-
-export default CollaboratorSearch;
+}

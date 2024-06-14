@@ -10,7 +10,7 @@
 /* Use client side render  */
 "use client"
 
-import Loader from '@/src/components/project/global/Loader'
+import Loader from '@/src/components/thirdParty/Loader'
 import { Alert, AlertDescription, AlertTitle } from '@/src/components/ui/alert'
 import { Button } from '@/src/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from '@/src/components/ui/form'
@@ -42,7 +42,7 @@ const SignUpFormSchema = z.object({
 /**
  * @brief Signup Page
  */
-const Signup = () => {
+export default function SignupPage() {
 
     const searchParams = useSearchParams();
     const [submitError, setSubmitError] = useState('');
@@ -144,6 +144,4 @@ const Signup = () => {
             </form>
         </Form>
     );
-};
-
-export default Signup
+}

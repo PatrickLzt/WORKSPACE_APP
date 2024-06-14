@@ -35,9 +35,9 @@ const SocketContext = createContext<SocketContextType>({
  * 
  * @returns SocketContextType
  */
-export const useSocket = () => {
+export function useSocket() {
     return useContext(SocketContext);
-};
+}
 
 /**
  * @brief Socket Provider
@@ -46,7 +46,7 @@ export const useSocket = () => {
  * 
  * @returns JSX.Element
  */
-export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
+export default function SocketProvider({ children }: { children: React.ReactNode }) {
     const [socket, setSocket] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
 
@@ -73,4 +73,4 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
             {children}
         </SocketContext.Provider>
     );
-};
+}

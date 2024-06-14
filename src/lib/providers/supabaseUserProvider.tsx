@@ -39,7 +39,7 @@ const SupabaseUserContext = createContext<SupabaseUserContextType>({
  * 
  * @returns SupabaseUserContextType
  */
-export const useSupabaseUser = () => {
+export function useSupabaseUser() {
     const context = useContext(SupabaseUserContext);
 
     if (!context) {
@@ -47,7 +47,7 @@ export const useSupabaseUser = () => {
     }
 
     return context
-};
+}
 
 interface SupabaseUserProviderProps {
     children: React.ReactNode;
@@ -60,7 +60,7 @@ interface SupabaseUserProviderProps {
  * 
  * @returns JSX.Element
  */
-export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({ children }) => {
+export function SupabaseUserProvider({ children }: SupabaseUserProviderProps) {
 
     const [user, setUser] = useState<AuthUser | null>(null);
     const [subscription, setSubscription] = useState<Subscription | null>(null);
@@ -97,4 +97,4 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({ chil
             {children}
         </SupabaseUserContext.Provider>
     );
-};
+}

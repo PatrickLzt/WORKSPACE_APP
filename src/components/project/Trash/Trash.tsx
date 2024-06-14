@@ -20,12 +20,10 @@ interface TrashProps {
 /**
  * @brief Trash component
  */
-const Trash: React.FC<TrashProps> = ({ children }) => {
+export default function Trash({ children }: TrashProps) {
   return (
     <CustomDialogTrigger header="Trash" content={<TrashRestore />}>
       {children}
     </CustomDialogTrigger>
   );
-};
-
-export default Trash;
+}

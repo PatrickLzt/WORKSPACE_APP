@@ -23,7 +23,7 @@ import { validate } from 'uuid';
  *  
  * @returns Response 
  */
-export const createWorkspace = async (workspace: workspace) => {
+export async function createWorkspace(workspace: workspace) {
     try {
         await db.insert(workspaces).values(workspace);
 
@@ -33,7 +33,7 @@ export const createWorkspace = async (workspace: workspace) => {
 
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Delete a workspace
@@ -42,11 +42,11 @@ export const createWorkspace = async (workspace: workspace) => {
  *  
  * @returns Response 
  */
-export const deleteWorkspace = async (workspaceId: string) => {
+export async function deleteWorkspace(workspaceId: string) {
     if (!workspaceId) return;
 
     await db.delete(workspaces).where(eq(workspaces.id, workspaceId));
-};
+}
 
 /**
  * @brief Subscription Status
@@ -55,7 +55,7 @@ export const deleteWorkspace = async (workspaceId: string) => {
  *  
  * @returns Response 
  */
-export const getUserSubscriptionStatus = async (userId: string) => {
+export async function getUserSubscriptionStatus(userId: string) {
     try {
         const data = await db.query.subscriptions.findFirst({ where: (s, { eq }) => eq(s.userId, userId), });
 
@@ -67,7 +67,7 @@ export const getUserSubscriptionStatus = async (userId: string) => {
     } catch (error) {
         return { data: null, error: `Error` };
     }
-};
+}
 
 /**
  * @brief Get Folders
@@ -76,7 +76,7 @@ export const getUserSubscriptionStatus = async (userId: string) => {
  *  
  * @returns Response 
  */
-export const getFolders = async (workspaceId: string) => {
+export async function getFolders(workspaceId: string) {
     const isValid = validate(workspaceId);
 
     if (!isValid)
@@ -92,7 +92,7 @@ export const getFolders = async (workspaceId: string) => {
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Get Workspace Details
@@ -101,7 +101,7 @@ export const getFolders = async (workspaceId: string) => {
  *  
  * @returns Response 
  */
-export const getWorkspaceDetails = async (workspaceId: string) => {
+export async function getWorkspaceDetails(workspaceId: string) {
     const isValid = validate(workspaceId);
 
     if (!isValid)
@@ -116,7 +116,7 @@ export const getWorkspaceDetails = async (workspaceId: string) => {
     } catch (error) {
         return { data: [], error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Get Files Details
@@ -125,7 +125,7 @@ export const getWorkspaceDetails = async (workspaceId: string) => {
  *  
  * @returns Response 
  */
-export const getFileDetails = async (fileId: string) => {
+export async function getFileDetails(fileId: string) {
     const isValid = validate(fileId);
 
     if (!isValid) {
@@ -139,7 +139,7 @@ export const getFileDetails = async (fileId: string) => {
     } catch (error) {
         return { data: [], error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Delete File
@@ -148,11 +148,11 @@ export const getFileDetails = async (fileId: string) => {
  *  
  * @returns Response 
  */
-export const deleteFile = async (fileId: string) => {
+export async function deleteFile(fileId: string) {
     if (!fileId) return;
 
     await db.delete(files).where(eq(files.id, fileId));
-};
+}
 
 /**
  * @brief Delete Folder
@@ -161,11 +161,11 @@ export const deleteFile = async (fileId: string) => {
  *  
  * @returns Response 
  */
-export const deleteFolder = async (folderId: string) => {
+export async function deleteFolder(folderId: string) {
     if (!folderId) return;
 
     await db.delete(files).where(eq(files.id, folderId));
-};
+}
 
 /**
  * @brief Get Folder Details
@@ -174,7 +174,7 @@ export const deleteFolder = async (folderId: string) => {
  *  
  * @returns Response 
  */
-export const getFolderDetails = async (folderId: string) => {
+export async function getFolderDetails(folderId: string) {
     const isValid = validate(folderId);
 
     if (!isValid) {
@@ -189,7 +189,7 @@ export const getFolderDetails = async (folderId: string) => {
     } catch (error) {
         return { data: [], error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Get User Details
@@ -198,7 +198,7 @@ export const getFolderDetails = async (folderId: string) => {
  *  
  * @returns Response 
  */
-export const getPrivateWorkspaces = async (userId: string) => {
+export async function getPrivateWorkspaces(userId: string) {
     if (!userId) return [];
 
     const privateWorkspaces = (await db.select({
@@ -214,7 +214,7 @@ export const getPrivateWorkspaces = async (userId: string) => {
     }).from(workspaces).where(and(notExists(db.select().from(collaborators).where(eq(collaborators.workspaceId, workspaces.id))), eq(workspaces.workspaceOwner, userId)))) as unknown as workspace[];
 
     return privateWorkspaces;
-};
+}
 
 /**
  * @brief Get Collaborating Workspaces
@@ -223,7 +223,7 @@ export const getPrivateWorkspaces = async (userId: string) => {
  *  
  * @returns Response 
  */
-export const getCollaboratingWorkspaces = async (userId: string) => {
+export async function getCollaboratingWorkspaces(userId: string) {
     if (!userId) return [];
 
     const collaboratedWorkspaces = (await db
@@ -240,7 +240,7 @@ export const getCollaboratingWorkspaces = async (userId: string) => {
         }).from(users).innerJoin(collaborators, eq(users.id, collaborators.userId)).innerJoin(workspaces, eq(collaborators.workspaceId, workspaces.id)).where(eq(users.id, userId))) as unknown as workspace[];
 
     return collaboratedWorkspaces;
-};
+}
 
 /**
  * @brief Get Shared Workspaces
@@ -249,7 +249,7 @@ export const getCollaboratingWorkspaces = async (userId: string) => {
  *  
  * @returns Response 
  */
-export const getSharedWorkspaces = async (userId: string) => {
+export async function getSharedWorkspaces(userId: string) {
     if (!userId) return [];
 
     const sharedWorkspaces = (await db.selectDistinct({
@@ -265,7 +265,7 @@ export const getSharedWorkspaces = async (userId: string) => {
     }).from(workspaces).orderBy(workspaces.createdAt).innerJoin(collaborators, eq(workspaces.id, collaborators.workspaceId)).where(eq(workspaces.workspaceOwner, userId))) as workspace[];
 
     return sharedWorkspaces;
-};
+}
 
 /**
  * @brief Get Files
@@ -274,7 +274,7 @@ export const getSharedWorkspaces = async (userId: string) => {
  *  
  * @returns Response 
  */
-export const getFiles = async (folderId: string) => {
+export async function getFiles(folderId: string) {
     const isValid = validate(folderId);
 
     if (!isValid) return { data: null, error: 'Error' };
@@ -286,7 +286,7 @@ export const getFiles = async (folderId: string) => {
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Add collaborators
@@ -296,7 +296,7 @@ export const getFiles = async (folderId: string) => {
  *  
  * @returns Response 
  */
-export const addCollaborators = async (users: User[], workspaceId: string) => {
+export async function addCollaborators(users: User[], workspaceId: string) {
 
     users.forEach(async (user: User) => {
         const userExists = await db.query.customers.findFirst({
@@ -308,7 +308,7 @@ export const addCollaborators = async (users: User[], workspaceId: string) => {
             await db.insert(collaborators).values({ workspaceId, userId: user.id });
         }
     });
-};
+}
 
 /**
  * @brief Remove collaborators
@@ -318,7 +318,7 @@ export const addCollaborators = async (users: User[], workspaceId: string) => {
  *  
  * @returns Response 
  */
-export const removeCollaborators = async (users: User[], workspaceId: string) => {
+export async function removeCollaborators(users: User[], workspaceId: string) {
 
     users.forEach(async (user: User) => {
         const userExists = await db.query.collaborators.findFirst({
@@ -330,7 +330,7 @@ export const removeCollaborators = async (users: User[], workspaceId: string) =>
             await db.delete(collaborators).where(and(eq(collaborators.workspaceId, workspaceId), eq(collaborators.userId, user.id)));
         }
     });
-};
+}
 
 /**
  * @brief Find User
@@ -339,21 +339,21 @@ export const removeCollaborators = async (users: User[], workspaceId: string) =>
  *  
  * @returns Response 
  */
-export const findUser = async (userId: string) => {
+export async function findUser(userId: string) {
 
     const response = await db.query.users.findFirst({
         where: (u, { eq }) => eq(u.id, userId),
     });
 
     return response;
-};
+}
 
 /**
  * @brief Get Active Products
  *  
  * @returns Response 
  */
-export const getActiveProductsWithPrice = async () => {
+export async function getActiveProductsWithPrice() {
     try {
         const res = await db.query.products.findMany({
             where: (pro, { eq }) => eq(pro.active, true),
@@ -368,7 +368,7 @@ export const getActiveProductsWithPrice = async () => {
     } catch (error) {
         return { data: [], error };
     }
-};
+}
 
 /**
  * @brief Create Folder
@@ -377,7 +377,7 @@ export const getActiveProductsWithPrice = async () => {
  *  
  * @returns Response 
  */
-export const createFolder = async (folder: Folder) => {
+export async function createFolder(folder: Folder) {
     try {
         await db.insert(folders).values(folder);
 
@@ -385,7 +385,7 @@ export const createFolder = async (folder: Folder) => {
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Create File
@@ -394,7 +394,7 @@ export const createFolder = async (folder: Folder) => {
  *  
  * @returns Response 
  */
-export const createFile = async (file: File) => {
+export async function createFile(file: File) {
     try {
         await db.insert(files).values(file);
 
@@ -402,7 +402,7 @@ export const createFile = async (file: File) => {
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Update Folder
@@ -412,7 +412,7 @@ export const createFile = async (file: File) => {
  *  
  * @returns Response 
  */
-export const updateFolder = async (folder: Partial<Folder>, folderId: string) => {
+export async function updateFolder(folder: Partial<Folder>, folderId: string) {
     try {
         await db.update(folders).set(folder).where(eq(folders.id, folderId));
 
@@ -420,7 +420,7 @@ export const updateFolder = async (folder: Partial<Folder>, folderId: string) =>
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Update File
@@ -430,7 +430,7 @@ export const updateFolder = async (folder: Partial<Folder>, folderId: string) =>
  *  
  * @returns Response 
  */
-export const updateFile = async (file: Partial<File>, fileId: string) => {
+export async function updateFile(file: Partial<File>, fileId: string) {
     try {
         await db.update(files).set(file).where(eq(files.id, fileId));
 
@@ -438,7 +438,7 @@ export const updateFile = async (file: Partial<File>, fileId: string) => {
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Update Workspace
@@ -448,7 +448,7 @@ export const updateFile = async (file: Partial<File>, fileId: string) => {
  *  
  * @returns Response 
  */
-export const updateWorkspace = async (workspace: Partial<workspace>, workspaceId: string) => {
+export async function updateWorkspace(workspace: Partial<workspace>, workspaceId: string) {
     if (!workspaceId) return;
 
     try {
@@ -458,7 +458,7 @@ export const updateWorkspace = async (workspace: Partial<workspace>, workspaceId
     } catch (error) {
         return { data: null, error: 'Error' };
     }
-};
+}
 
 /**
  * @brief Get Collaborators
@@ -467,7 +467,7 @@ export const updateWorkspace = async (workspace: Partial<workspace>, workspaceId
  *  
  * @returns Response 
  */
-export const getCollaborators = async (workspaceId: string) => {
+export async function getCollaborators(workspaceId: string) {
 
     const response = await db.select().from(collaborators).where(eq(collaborators.workspaceId, workspaceId));
 
@@ -484,7 +484,7 @@ export const getCollaborators = async (workspaceId: string) => {
     const resolvedUsers = await Promise.all(userInformation);
 
     return resolvedUsers.filter(Boolean) as User[];
-};
+}
 
 /**
  * @brief Get User from Search
@@ -493,10 +493,10 @@ export const getCollaborators = async (workspaceId: string) => {
  *  
  * @returns Response 
  */
-export const getUsersFromSearch = async (email: string) => {
+export async function getUsersFromSearch(email: string) {
     if (!email) return [];
 
     const accounts = db.select().from(users).where(ilike(users.email, `${email}%`));
 
     return accounts;
-};
+}

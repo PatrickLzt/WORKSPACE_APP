@@ -9,10 +9,10 @@
 
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
-import Worksp4ceHome from '../CustomIcons/HomeIcon';
+import Worksp4ceHome from '../../thirdParty/CustomIcons/HomeIcon';
 import Settings from '../Settings/Settings';
-import Worksp4ceSettingsIcon from '../CustomIcons/SettingsIcon';
-import Worksp4ceTrashIcon from '../CustomIcons/TrashIcon';
+import Worksp4ceSettingsIcon from '../../thirdParty/CustomIcons/SettingsIcon';
+import Worksp4ceTrashIcon from '../../thirdParty/CustomIcons/TrashIcon';
 import Trash from '../Trash/Trash';
 
 interface NativeNavigationProps {
@@ -28,7 +28,7 @@ interface NativeNavigationProps {
  *  
  * @returns JSX.Element 
  */
-const NativeNavigation: React.FC<NativeNavigationProps> = ({ myWorkspaceId, className, }) => {
+export default function NativeNavigation({ myWorkspaceId, className, }: NativeNavigationProps) {
 
     return (
         <nav className={twMerge('my-2', className)}>
@@ -56,6 +56,4 @@ const NativeNavigation: React.FC<NativeNavigationProps> = ({ myWorkspaceId, clas
             </ul>
         </nav>
     );
-};
-
-export default NativeNavigation;
+}

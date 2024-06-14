@@ -13,7 +13,7 @@
 import React, { useState } from 'react';
 
 import { Button } from '../../ui/button';
-import Loader from './Loader';
+import Loader from '../../thirdParty/Loader';
 import { useToast } from '../../ui/use-toast';
 import { Price, ProductWithPrice } from '@/src/lib/supabase/supabase.types';
 import { useSubscriptionModal } from '@/src/lib/providers/subscriptionModalProvider';

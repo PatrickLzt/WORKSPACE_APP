@@ -81,7 +81,7 @@ const TOOLBAR_OPTIONS = [
  * 
  * @returns JSX.Element
  */
-const QuillEditor: React.FC<QuillEditorProps> = ({ dirDetails, dirType, fileId, }) => {
+export default function QuillEditor({ dirDetails, dirType, fileId, }: QuillEditorProps) {
 
     const supabase = createClientComponentClient();
     const saveTimerRef = useRef<ReturnType<typeof setTimeout>>();
@@ -545,6 +545,4 @@ const QuillEditor: React.FC<QuillEditorProps> = ({ dirDetails, dirType, fileId, 
             </div>
         </>
     );
-};
-
-export default QuillEditor;
+}

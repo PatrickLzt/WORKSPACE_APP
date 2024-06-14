@@ -31,7 +31,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
  * 
  * @returns JSX.Element
  */
-const WorkspaceCreator = () => {
+export default function WorkspaceCreator() {
 
     const { user } = useSupabaseUser();
     const { toast } = useToast();
@@ -171,6 +171,4 @@ const WorkspaceCreator = () => {
             </Button>
         </div>
     );
-};
-
-export default WorkspaceCreator;
+}

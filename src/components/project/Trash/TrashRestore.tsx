@@ -19,7 +19,7 @@ import React, { useEffect, useState } from 'react';
 /**
  * @brief Trash restore component
  */
-const TrashRestore = () => {
+export default function TrashRestore() {
 
   const { state, workspaceId } = useAppState();
   const [folders, setFolders] = useState<appFoldersType[] | []>([]);
@@ -85,6 +85,4 @@ const TrashRestore = () => {
       )}
     </section>
   );
-};
-
-export default TrashRestore;
+}

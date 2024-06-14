@@ -35,7 +35,7 @@ interface FoldersDropdownListProps {
  * 
  * @returns JSX.Element
  */
-const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({ workspaceFolders, workspaceId, }) => {
+export default function FoldersDropdownList({ workspaceFolders, workspaceId, }: FoldersDropdownListProps) {
 
     // useSupabaseRealtime();
 
@@ -113,6 +113,4 @@ const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({ workspaceFold
             </Accordion>
         </>
     );
-};
-
-export default FoldersDropdownList;
+}

@@ -22,14 +22,14 @@ import Image from "next/image"
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
 import { actionLoginUser } from "@/src/lib/serverActions/authActions"
-import Loader from "@/src/components/project/global/Loader"
+import Loader from "@/src/components/thirdParty/Loader"
 
 /**
  * @brief Home Page
  * 
  * @return {JSX.Element} for the Login Page
  */
-const LoginPage = () => {
+export default function LoginPage() {
 
     const router = useRouter();
     const [submitError, setSubmitError] = useState('');
@@ -95,6 +95,4 @@ const LoginPage = () => {
             </form>
         </Form>
     );
-};
-
-export default LoginPage;
+}

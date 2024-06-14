@@ -311,7 +311,8 @@ interface AppStateProviderProps {
  *  
  * @returns  
  */
-const AppStateProvider: React.FC<AppStateProviderProps> = ({ children }) => {
+export function AppStateProvider({ children }: AppStateProviderProps) {
+
     const [state, dispatch] = useReducer(appReducer, initialState);
     const pathname = usePathname();
 
@@ -365,11 +366,10 @@ const AppStateProvider: React.FC<AppStateProviderProps> = ({ children }) => {
             {children}
         </AppStateContext.Provider>
     );
-};
+}
 
-export default AppStateProvider;
+export default function useAppState() {
 
-export const useAppState = () => {
     const context = useContext(AppStateContext)
 
     if (context === undefined) {

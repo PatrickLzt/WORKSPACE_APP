@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar';
 import { LogOut } from 'lucide-react';
 import { Subscription } from '@/src/lib/supabase/supabase.types';
 import db from '@/src/lib/supabase/db';
-import Worksp4ceProfileIcon from '../CustomIcons/ProfileIcon';
+import Worksp4ceProfileIcon from '../../thirdParty/CustomIcons/ProfileIcon';
 import LogoutButton from '../global/LogoutButton';
 import ModeToggle from '../global/ModeToggle';
 
@@ -28,7 +28,7 @@ interface UserCardProps {
  * 
  * @returns JSX.Element
  */
-const UserCard: React.FC<UserCardProps> = async ({ subscription }) => {
+export default async function UserCard({ subscription }: UserCardProps) {
 
     const supabase = createServerComponentClient({ cookies });
     const { data: { user }, } = await supabase.auth.getUser();
@@ -76,6 +76,4 @@ const UserCard: React.FC<UserCardProps> = async ({ subscription }) => {
             </div>
         </article>
     );
-};
-
-export default UserCard;
+}

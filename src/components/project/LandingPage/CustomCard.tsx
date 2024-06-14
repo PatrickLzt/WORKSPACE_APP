@@ -25,7 +25,7 @@ type CustomCardProps = CardProps & {
  * 
  * @returns The JSX Component for the Custom Card
  */
-export const CustomCard: React.FC<CustomCardProps> = ({ cardHeader, cardContent, cardFooter, ...props }) => {
+export default function CustomCard({ cardHeader, cardContent, cardFooter, ...props }: CustomCardProps) {
 
     return (
         <Card className={cn('w-[380px]')} {...props}>

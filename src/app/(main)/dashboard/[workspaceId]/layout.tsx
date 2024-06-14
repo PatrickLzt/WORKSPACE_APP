@@ -23,7 +23,7 @@ interface LayoutProps {
  * @returns Layout template
  * 
  */
-const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
+export default function Layout({ children, params }: LayoutProps) {
 
     return (
         <main className="flex overflow-hidden h-screen w-screen">
@@ -36,5 +36,4 @@ const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
             </div>
         </main>
     );
-};
-export default Layout
+}

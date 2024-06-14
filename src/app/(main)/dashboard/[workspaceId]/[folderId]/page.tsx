@@ -16,7 +16,7 @@ import { redirect } from 'next/navigation';
 /**
  * @brief Page for folder details
  */
-const Folder = async ({ params }: { params: { folderId: string } }) => {
+export default async function FolderDetailsPage({ params }: { params: { folderId: string } }) {
 
     const { data, error } = await getFolderDetails(params.folderId);
 
@@ -29,6 +29,4 @@ const Folder = async ({ params }: { params: { folderId: string } }) => {
             <QuillEditor dirType="folder" fileId={params.folderId} dirDetails={data[0] || {}} />
         </div>
     );
-};
-
-export default Folder;
+}

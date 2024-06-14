@@ -13,7 +13,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../../ui/navigation-menu";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../../ui/navigation-menu";
 import { cn } from "@/src/lib/utils";
 import { Button } from "../../ui/button";
 
@@ -60,7 +60,7 @@ const components: { title: string; href: string; description: string }[] = [
  * 
  * @returns The JSX Component for the Header
  */
-const Header = () => {
+export default function Header() {
 
     const [path, setPath] = useState('#products');
     return (
@@ -125,9 +125,6 @@ const Header = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), { 'dark:text-white': path === '#testimonials', 'dark:text-white/40': path !== '#testimonials', 'font-normal': true, 'text-xl': true, })}>
-                            Testimonial
-                        </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
@@ -145,9 +142,7 @@ const Header = () => {
             </aside>
         </header>
     );
-};
-
-export default Header;
+}
 
 /**
  * @brief ListItem Component

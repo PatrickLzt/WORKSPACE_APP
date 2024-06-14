@@ -33,7 +33,8 @@ interface SidebarProps {
  * 
  * @returns JSX.Element
  */
-const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
+export default async function Sidebar({ params, className }: SidebarProps) {
+
     const supabase = createServerComponentClient({ cookies });
     //user
     const { data: { user }, } = await supabase.auth.getUser();
@@ -73,6 +74,4 @@ const Sidebar: React.FC<SidebarProps> = async ({ params, className }) => {
             <UserCard subscription={subscriptionData} />
         </aside>
     );
-};
-
-export default Sidebar;
+}

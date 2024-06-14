@@ -13,25 +13,25 @@ export function cn(...inputs: ClassValue[]) {
  * 
  * @returns string
  */
-export const formatPrice = (price: Price) => {
+export function formatPrice(price: Price) {
   const priceString = new Intl.NumberFormat('en-US', { style: 'currency', currency: price.currency || undefined, minimumFractionDigits: 0, }).format((price?.unitAmount || 0) / 100);
 
   return priceString;
-};
+}
 
 /**
  * @brief Get URL
  * 
  * @returns string
  */
-export const getURL = () => {
+export function getURL() {
   let url = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000/';
 
   url = url.includes('http') ? url : `https://${url}`;
   url = url.charAt(url.length - 1) === '/' ? url : `${url}/`;
 
   return url;
-};
+}
 
 /**
  * @brief Posting Data
@@ -40,7 +40,7 @@ export const getURL = () => {
  * 
  * @returns Response
  */
-export const postData = async ({ url, data, }: { url: string; data?: { price: Price }; }) => {
+export async function postData({ url, data, }: { url: string; data?: { price: Price } }) {
 
   console.log('posting,', url, data);
 
@@ -52,7 +52,7 @@ export const postData = async ({ url, data, }: { url: string; data?: { price: Pr
   }
 
   return res.json();
-};
+}
 
 /**
  * @brief Convert to DateTime
@@ -61,10 +61,10 @@ export const postData = async ({ url, data, }: { url: string; data?: { price: Pr
  *  
  * @returns The date in seconds
  */
-export const toDateTime = (secs: number) => {
+export function toDateTime(secs: number) {
 
   const t = new Date('1970-01-01T00:30:00Z');
   t.setSeconds(secs);
 
   return t;
-};
+}

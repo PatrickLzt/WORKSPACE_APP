@@ -19,7 +19,7 @@ interface LogoutButtonProps {
     children: React.ReactNode;
 }
 
-const LogoutButton: React.FC<LogoutButtonProps> = ({ children }) => {
+export default function LogoutButton({ children }: LogoutButtonProps) {
 
     const { dispatch } = useAppState() as any;
     const router = useRouter();
@@ -31,6 +31,4 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ children }) => {
             {children}
         </Button>
     );
-};
-
-export default LogoutButton;
+}

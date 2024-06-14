@@ -66,7 +66,7 @@ import {
     SelectValue
 } from '../../ui/select';
 import { useToast } from '../../ui/use-toast';
-import Worksp4ceProfileIcon from '../CustomIcons/ProfileIcon';
+import Worksp4ceProfileIcon from '../../thirdParty/CustomIcons/ProfileIcon';
 import CollaboratorSearch from '../global/CollaboratorSearch';
 import LogoutButton from '../global/LogoutButton';
 
@@ -75,7 +75,7 @@ import LogoutButton from '../global/LogoutButton';
  * 
  * @returns JSX.Element
  */
-const SettingsForm = () => {
+export default function SettingsForm() {
 
     const { toast } = useToast();
     const { user, subscription } = useSupabaseUser();
@@ -399,6 +399,4 @@ const SettingsForm = () => {
             </AlertDialog>
         </div>
     );
-};
-
-export default SettingsForm;
+}

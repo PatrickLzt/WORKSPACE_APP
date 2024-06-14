@@ -27,7 +27,7 @@ interface BannerUploadProps {
  * 
  * @returns JSX.Element
  */
-const BannerUpload: React.FC<BannerUploadProps> = ({ id, dirType, children, className, }) => {
+export default function BannerUpload({ id, dirType, children, className }: BannerUploadProps): JSX.Element {
 
     return (
         <CustomDialogTrigger header="Upload Banner" content={
@@ -35,6 +35,4 @@ const BannerUpload: React.FC<BannerUploadProps> = ({ id, dirType, children, clas
             {children}
         </CustomDialogTrigger>
     );
-};
-
-export default BannerUpload;
+}

@@ -14,7 +14,7 @@ import { MAX_FOLDERS_FREE_PLAN } from "@/src/lib/constants";
 import { useAppState } from "@/src/lib/providers/stateProvider";
 import { Subscription } from "@/src/lib/supabase/supabase.types";
 import { useEffect, useState } from "react";
-import Worksp4ceDiamondIcon from "../CustomIcons/DiamondIcon";
+import Worksp4ceDiamondIcon from "../../thirdParty/CustomIcons/DiamondIcon";
 import { Progress } from "../../ui/progress";
 
 
@@ -23,7 +23,14 @@ interface PlanUsageProps {
     subscription: Subscription | null;
 }
 
-const PlanUsage: React.FC<PlanUsageProps> = ({ foldersLength, subscription, }) => {
+/**
+ * @brief Plan Usage component
+ * 
+ * @param { foldersLength, subscription }
+ * 
+ * @returns JSX.Element
+ */
+export default function PlanUsage({ foldersLength, subscription, }: PlanUsageProps) {
 
     const { workspaceId, state } = useAppState() as any;
     const [usagePercentage, setUsagePercentage] = useState((foldersLength / MAX_FOLDERS_FREE_PLAN) * 100);
@@ -55,6 +62,4 @@ const PlanUsage: React.FC<PlanUsageProps> = ({ foldersLength, subscription, }) =
             )}
         </article>
     );
-};
-
-export default PlanUsage;
+}

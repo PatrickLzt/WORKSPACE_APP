@@ -35,11 +35,11 @@ const SubscriptionModalContext = createContext<SubscriptionModalContextType>({
  * 
  * @returns SubscriptionModalContextType
  */
-export const useSubscriptionModal = () => {
+export function useSubscriptionModal() {
     return useContext(SubscriptionModalContext);
-};
+}
 
-export const SubscriptionModalProvider = ({ children, products, }: { children: React.ReactNode; products: ProductWithPrice[]; }) => {
+export function SubscriptionModalProvider({ children, products, }: { children: React.ReactNode; products: ProductWithPrice[]; }) {
 
     const [open, setOpen] = useState(false);
 
@@ -49,4 +49,4 @@ export const SubscriptionModalProvider = ({ children, products, }: { children: R
             <SubscriptionModal products={products} />
         </SubscriptionModalContext.Provider>
     );
-};
+}

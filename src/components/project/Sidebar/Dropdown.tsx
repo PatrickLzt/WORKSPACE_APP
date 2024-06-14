@@ -44,7 +44,7 @@ interface DropdownProps {
  * 
  * @returns JSX.Element
  */
-const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
+export default function Dropdown({ title, id, listType, iconId }: DropdownProps) {
 
     const { toast } = useToast();
     const { user } = useSupabaseUser();
@@ -323,6 +323,4 @@ const Dropdown: React.FC<DropdownProps> = ({ title, id, listType, iconId }) => {
             </AccordionContent>
         </AccordionItem>
     );
-};
-
-export default Dropdown;
+}

@@ -22,7 +22,7 @@ interface TitleSectionProps {
  * 
  * @returns The JSX Component for the Title Section
  */
-export const TitleSection: React.FC<TitleSectionProps> = ({ title, subtitle, pill }) => {
+export default function TitleSection({ title, subtitle, pill }: TitleSectionProps) {
     return (
         <>
             <section className="flex flex-col gap-4 justify-center items-start md:items-center">

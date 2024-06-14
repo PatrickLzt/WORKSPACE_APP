@@ -1,7 +1,7 @@
 /**
  * @file src/app/(site)/page.tsx
  * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
- * @brief Home Page
+ * @brief Base Template
  * @version 1.0
  * @date 
  *
@@ -14,7 +14,7 @@ interface TemplateProps {
 /**
  * @brief Template
  * 
- * @return {JSX.Element} Template
+ * @return {JSX.Element}
  */
 const Template: React.FC<TemplateProps> = ({ children }) => {
     return (

@@ -26,7 +26,7 @@ interface TooltipComponentProps {
  * 
  * @returns JSX.Element
  */
-const TooltipComponent: React.FC<TooltipComponentProps> = ({ children, message }) => {
+export default function TooltipComponent({ children, message }: TooltipComponentProps) {
     return (
         <TooltipProvider>
             <Tooltip>
@@ -35,6 +35,4 @@ const TooltipComponent: React.FC<TooltipComponentProps> = ({ children, message }
             </Tooltip>
         </TooltipProvider>
     );
-};
-
-export default TooltipComponent;
+}

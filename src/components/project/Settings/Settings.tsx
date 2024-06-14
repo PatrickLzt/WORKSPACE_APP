@@ -21,12 +21,10 @@ interface SettingsProps {
  * 
  * @returns JSX.Element
  */
-const Settings: React.FC<SettingsProps> = ({ children }) => {
+export default function Settings({ children }: SettingsProps) {
     return (
         <CustomDialogTrigger header="Settings" content={<SettingsForm />}>
             {children}
         </CustomDialogTrigger>
     );
-};
-
-export default Settings;
+}

@@ -19,7 +19,7 @@ interface LayoutProps {
  * @returns Layout template
  * 
  */
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export default function DashboardLayout({ children }: LayoutProps) {
 
     return (
         <main className='flex over-hidden h-screen'>
@@ -27,5 +27,3 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </main>
     )
 }
-
-export default Layout

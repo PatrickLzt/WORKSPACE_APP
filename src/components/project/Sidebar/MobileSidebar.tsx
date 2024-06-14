@@ -13,7 +13,7 @@
 import { Menu } from 'lucide-react';
 import { useState } from 'react';
 import clsx from 'clsx';
-import Worksp4cePageIcon from '../CustomIcons/PageIcon';
+import Worksp4cePageIcon from '../../thirdParty/CustomIcons/PageIcon';
 
 interface MobileSidebarProps {
     children: React.ReactNode;
@@ -39,7 +39,7 @@ export const nativeNavigations = [
  * 
  * @returns JSX.Element
  */
-const MobileSidebar: React.FC<MobileSidebarProps> = ({ children }) => {
+export default function MobileSidebar({ children }: MobileSidebarProps) {
     const [selectedNav, setSelectedNav] = useState('');
     return (
         <>
@@ -61,6 +61,4 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ children }) => {
             </nav>
         </>
     );
-};
-
-export default MobileSidebar;
+}

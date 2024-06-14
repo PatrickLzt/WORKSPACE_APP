@@ -1,7 +1,7 @@
 /**
  * @file src/components/global/EmojiPicker.tsx
  * @author Patrick Lorenzeti <patrick.lorenzeti@outlook.com>
- * @brief Supabase queries
+ * @brief EmojiPicker component
  * @version 1.0
  * @date 
  *
@@ -26,7 +26,7 @@ interface EmojiPickerProps {
  * 
  * @returns JSX.Element
  */
-const EmojiPicker: React.FC<EmojiPickerProps> = ({ children, getValue }) => {
+export default function EmojiPicker({ children, getValue }: EmojiPickerProps) {
 
     const Picker = dynamic(() => import('emoji-picker-react'))
 
@@ -47,5 +47,3 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({ children, getValue }) => {
         </div>
     )
 }
-
-export default EmojiPicker
