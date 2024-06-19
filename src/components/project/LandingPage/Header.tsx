@@ -63,6 +63,7 @@ const components: { title: string; href: string; description: string }[] = [
 export default function Header() {
 
     const [path, setPath] = useState('#products');
+
     return (
         <header className="p-4 flex justify-center items-center">
             <Link href={'/'} className="w-full flex gap-2 justify-left items-center">
@@ -81,7 +82,8 @@ export default function Header() {
                         <NavigationMenuContent>
                             <ul className="grid gap-3 p-6 md:w-[400px] ld:w-[500px] lg:grid-cols-[.75fr_1fr]">
                                 <li className="row-span-3">
-                                    <span className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
+                                    <span className="flex h-full w-full select-none flex-col justify-center items-center rounded-md bg-gradient-to-b 
+                                    from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                                         Welcome
                                     </span>
                                 </li>
@@ -107,7 +109,7 @@ export default function Header() {
                                 <ListItem title="Pro Plan" href={'#'}>
                                     Unlock full power with collaboration.
                                 </ListItem>
-                                <ListItem title={'free Plan'} href={'#'}>
+                                <ListItem title={'Free Plan'} href={'#'}>
                                     Great for teams just starting out.
                                 </ListItem>
                             </ul>

@@ -98,7 +98,7 @@ const initialState: AppState = { workspaces: [] };
  * 
  * @returns Reduced states
  */
-const appReducer = (state: AppState = initialState, action: Action): AppState => {
+function appReducer(state: AppState = initialState, action: Action) {
     switch (action.type) {
         case 'ADD_WORKSPACE':
             return { ...state, workspaces: [...state.workspaces, action.payload] };
@@ -282,7 +282,7 @@ const appReducer = (state: AppState = initialState, action: Action): AppState =>
         default:
             return initialState;
     }
-};
+}
 
 interface AppStateContextProps {
     state: AppState;
@@ -292,6 +292,9 @@ interface AppStateContextProps {
     fileId: string | undefined;
 }
 
+/**
+ * @brief App state context
+ */
 const AppStateContext = createContext<AppStateContextProps | undefined>({
     state: initialState,
     dispatch: () => { },
@@ -309,7 +312,7 @@ interface AppStateProviderProps {
  * 
  * @param children
  *  
- * @returns  
+ * @returns JSX.Element
  */
 export function AppStateProvider({ children }: AppStateProviderProps) {
 

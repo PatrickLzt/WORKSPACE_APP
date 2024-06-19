@@ -13,7 +13,7 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { Button } from '../../ui/button';
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 
 interface LogoutButtonProps {
     children: React.ReactNode;

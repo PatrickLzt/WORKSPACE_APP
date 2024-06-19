@@ -10,7 +10,7 @@
 /* Use Client side rendering */
 'use client';
 
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 import { useSubscriptionModal } from '@/src/lib/providers/subscriptionModalProvider';
 import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';
 import {

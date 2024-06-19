@@ -14,7 +14,7 @@ import { PlusIcon } from 'lucide-react';
 import { v4 } from 'uuid';
 import { useToast } from '../../ui/use-toast';
 import { Folder } from '@/src/lib/supabase/supabase.types';
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 import { useSubscriptionModal } from '@/src/lib/providers/subscriptionModalProvider';
 import { useEffect, useState } from 'react';
 import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';

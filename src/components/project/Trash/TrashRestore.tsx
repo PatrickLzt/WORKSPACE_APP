@@ -10,7 +10,7 @@
 /* Use Client side rendering */
 'use client';
 
-import { appFoldersType, useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState, { appFoldersType } from '@/src/lib/providers/stateProvider';
 import { File } from '@/src/lib/supabase/supabase.types';
 import { FileIcon, FolderIcon } from 'lucide-react';
 import Link from 'next/link';

@@ -33,7 +33,7 @@ interface SubscriptionModalProps {
  *  
  * @returns JSX.Element
  */
-const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ products }) => {
+export default function SubscriptionModal({ products }: SubscriptionModalProps) {
 
     const { open, setOpen } = useSubscriptionModal();
     const { toast } = useToast();
@@ -98,6 +98,4 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ products }) => {
             )}
         </Dialog>
     );
-};
-
-export default SubscriptionModal;
+}

@@ -22,7 +22,7 @@ import { useToast } from '../../ui/use-toast';
 import { PlusIcon, Trash } from 'lucide-react';
 import { v4 } from 'uuid';
 import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 import { createFile, updateFile, updateFolder } from '@/src/lib/supabase/queries';
 import { File } from '@/src/lib/supabase/supabase.types';
 import EmojiPicker from '../global/EmojiPicker';

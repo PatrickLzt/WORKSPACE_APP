@@ -11,7 +11,7 @@
 'use client';
 
 import { useSocket } from '@/src/lib/providers/socketProvider';
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 import { useSupabaseUser } from '@/src/lib/providers/supabaseUserProvider';
 import {
     deleteFile,
@@ -101,8 +101,8 @@ export default function QuillEditor({ dirDetails, dirType, fileId, }: QuillEdito
         let selectedDir;
 
         if (dirType === 'file') {
-            selectedDir = state.workspaces.find((workspace) => workspace.id === workspaceId)?.folders.find((folder) =>
-                folder.id === folderId)?.files.find((file) => file.id === fileId);
+            selectedDir = state.workspaces.find((workspace: any) => workspace.id === workspaceId)?.folders.find((folder: any) =>
+                folder.id === folderId)?.files.find((file: any) => file.id === fileId);
         }
 
         if (dirType === 'folder') {

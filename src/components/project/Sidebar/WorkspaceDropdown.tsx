@@ -10,7 +10,7 @@
 /* Use Client side rendering */
 'use client';
 
-import { useAppState } from "@/src/lib/providers/stateProvider";
+import useAppState from "@/src/lib/providers/stateProvider";
 import { workspace } from "@/src/lib/supabase/supabase.types";
 import { useEffect, useState } from "react";
 import SelectedWorkspace from "./SelectedWorkspace";

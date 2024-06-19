@@ -16,7 +16,7 @@ import { Label } from '../../ui/label';
 import { Input } from '../../ui/input';
 import { Button } from '../../ui/button';
 import Loader from '../../thirdParty/Loader';
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { UploadBannerFormSchema } from '@/src/lib/types';
 import { updateFile, updateFolder, updateWorkspace } from '@/src/lib/supabase/queries';

@@ -11,7 +11,7 @@
 'use client';
 
 import { MAX_FOLDERS_FREE_PLAN } from "@/src/lib/constants";
-import { useAppState } from "@/src/lib/providers/stateProvider";
+import useAppState from "@/src/lib/providers/stateProvider";
 import { Subscription } from "@/src/lib/supabase/supabase.types";
 import { useEffect, useState } from "react";
 import Worksp4ceDiamondIcon from "../../thirdParty/CustomIcons/DiamondIcon";

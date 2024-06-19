@@ -33,7 +33,7 @@ import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { CreateWorkspaceFormSchema } from '../../../lib/types';
 import { z } from 'zod';
-import { useAppState } from '@/src/lib/providers/stateProvider';
+import useAppState from '@/src/lib/providers/stateProvider';
 
 interface DashboardSetupProps {
     user: AuthUser;
